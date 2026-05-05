@@ -453,6 +453,27 @@ nav{top:var(--mx-sitebar-height)!important;}
 @media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
 @media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
 
+
+
+/* === Tarifs bateau & excursions — Manga Beach === */
+.boat-tariffs-section{background:linear-gradient(180deg,var(--cream),var(--gold-pale));position:relative;overflow:hidden}
+.boat-tariffs-section.dark{background:linear-gradient(135deg,var(--navy),var(--navy-mid));color:#fff}
+.boat-tariffs-section.dark .section-title{color:#fff}
+.boat-tariffs-section.dark .section-sub{color:rgba(255,255,255,.62)}
+.boat-tariffs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2.4rem}
+.boat-tariff-card{background:#fff;border:1px solid var(--border);padding:1.35rem 1.45rem;box-shadow:0 18px 52px rgba(10,22,40,.08);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.boat-tariff-card:hover{transform:translateY(-4px);box-shadow:0 26px 70px rgba(10,22,40,.13);border-color:rgba(201,168,76,.45)}
+.boat-tariff-card.featured{border-top:3px solid var(--gold)}
+.boat-tariff-kicker{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.45rem}
+.boat-tariff-title{font-family:'Cormorant Garamond',serif;font-size:1.38rem;color:var(--navy);font-weight:500;margin-bottom:.9rem;line-height:1.15}
+.boat-tariff-table{display:grid;gap:.45rem}
+.boat-tariff-row{display:flex;justify-content:space-between;gap:1rem;padding:.5rem .65rem;background:var(--cream);font-size:.82rem;color:var(--muted)}
+.boat-tariff-row strong{color:var(--navy);font-weight:700;white-space:nowrap}
+.boat-tariff-note{margin-top:1.5rem;padding:1rem 1.2rem;background:rgba(201,168,76,.12);border:1px solid var(--border);font-size:.84rem;color:var(--muted);line-height:1.7}
+.boat-tariffs-section.dark .boat-tariff-note{background:rgba(255,255,255,.06);color:rgba(255,255,255,.66);border-color:rgba(201,168,76,.22)}
+.boat-tariffs-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+@media(max-width:900px){.boat-tariffs-grid{grid-template-columns:1fr}.boat-tariffs-actions .btn-primary,.boat-tariffs-actions .btn-outline{width:100%;text-align:center}.boat-tariff-row{flex-direction:column;gap:.15rem}}
+
 </style>
 </head>
 <body>
@@ -651,6 +672,45 @@ nav{top:var(--mx-sitebar-height)!important;}
       <div class="discover-btn">
         <a href="contact.html" class="btn-primary">Préparer votre aventure</a>
       </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TARIFS BATEAU & EXCURSIONS -->
+<section class="section boat-tariffs-section">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-label">Transferts & excursions</div>
+    <h2 class="section-title">Tarifs bateau <em>Manga Beach</em></h2>
+    <p class="section-sub">Depuis Manga Beach Hotel, nous pouvons organiser vos transferts en bateau, sorties vers Nosy Mangabe, Parc Masoala, Ambanizana, observation baleines et pêche sportive.</p>
+
+    <div class="boat-tariffs-grid">
+      <div class="boat-tariff-card featured">
+        <div class="boat-tariff-kicker">Excursion</div>
+        <div class="boat-tariff-title">Manga Beach → Nosy Mangabe</div>
+        <div class="boat-tariff-table">
+          <div class="boat-tariff-row"><span>1 personne</span><strong>200 000 Ar</strong></div>
+          <div class="boat-tariff-row"><span>2 personnes</span><strong>150 000 Ar / pax</strong></div>
+          <div class="boat-tariff-row"><span>3 personnes</span><strong>120 000 Ar / pax</strong></div>
+          <div class="boat-tariff-row"><span>4 personnes et plus</span><strong>100 000 Ar / pax</strong></div>
+        </div>
+      </div>
+      <div class="boat-tariff-card featured">
+        <div class="boat-tariff-kicker">Parc Masoala</div>
+        <div class="boat-tariff-title">Manga Beach → Ambodiforaha</div>
+        <div class="boat-tariff-table">
+          <div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>1 300 000 Ar</strong></div>
+          <div class="boat-tariff-row"><span>3 personnes</span><strong>500 000 Ar / pax</strong></div>
+          <div class="boat-tariff-row"><span>4 personnes et plus</span><strong>400 000 Ar / pax</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="boat-tariff-note">Tarifs indicatifs selon le nombre de personnes. Les horaires, conditions météo et disponibilités sont confirmés avec votre demande.</div>
+    <div class="boat-tariffs-actions">
+      <a href="reservation.html" class="btn-primary">Demander une réservation</a>
+      <a href="contact.html" class="btn-outline" style="border-color:var(--navy);color:var(--navy)">Nous contacter</a>
     </div>
   </div>
 </section>
