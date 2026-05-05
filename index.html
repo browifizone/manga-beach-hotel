@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manga Beach Hotel Madagascar — Maroantsetra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:      #0a1628;
+      --navy-mid:  #112240;
+      --navy-light:#1a3a5c;
+      --gold:      #c9a84c;
+      --gold-light:#e8d5a3;
+      --gold-pale: #f5ecd7;
+      --cream:     #faf7f2;
+      --cream-dark:#f0ead8;
+      --white:     #ffffff;
+      --muted:     #6b7a8d;
+      --text:      #1a2332;
+      --border:    rgba(201,168,76,.2);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: transparent;
+      transition: background .4s, padding .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,.97);
+      padding: .8rem 4rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--navy); font-weight: 600;
+      flex-shrink: 0;
+    }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; }
+    .nav-logo-text strong { display: block; font-size: 1.15rem; color: var(--white); font-weight: 600; letter-spacing: .04em; }
+    .nav-logo-text span { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-light); font-family: 'Jost', sans-serif; font-weight: 300; }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.8); font-weight: 500; transition: color .2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-cta {
+      background: var(--gold); color: var(--navy);
+      padding: .6rem 1.6rem; font-size: .7rem; letter-spacing: .2em;
+      text-transform: uppercase; font-weight: 600;
+      border: none; cursor: pointer; transition: all .2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--navy); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--white); font-weight: 300; }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-menu .mob-cta { background: var(--gold); color: var(--navy); padding: .8rem 2.5rem; font-family: 'Jost', sans-serif; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; margin-top: 1rem; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0a1628 0%, #1a3a5c 40%, #0d2a4a 70%, #0a1628 100%);
+    }
+    /* Decorative ocean waves */
+    .hero-waves {
+      position: absolute; inset: 0; overflow: hidden; opacity: .15;
+    }
+    .hero-waves svg { position: absolute; bottom: 0; width: 100%; }
+    .hero-img-overlay {
+      position: absolute; inset: 0;
+      background: url('assets/hero.jpg') center/cover no-repeat;
+      opacity: .35;
+      mix-blend-mode: luminosity;
+    }
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,.3) 0%, rgba(10,22,40,.6) 60%, rgba(10,22,40,.9) 100%);
+    }
+    /* Gold decorative lines */
+    .hero-deco-left {
+      position: absolute; left: 4rem; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .8rem;
+      opacity: .4;
+    }
+    .hero-deco-left .deco-line { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
+    .hero-deco-left .deco-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 2rem;
+      animation: heroFadeIn 1.2s ease both;
+    }
+    @keyframes heroFadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .62rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+      animation: heroFadeIn 1s .2s ease both;
+    }
+    .hero-badge::before, .hero-badge::after { content: ''; width: 30px; height: 1px; background: var(--gold); opacity: .6; }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: var(--white); font-weight: 300; line-height: 1.1;
+      margin-bottom: .5rem;
+      animation: heroFadeIn 1s .35s ease both;
+    }
+    .hero-title em { color: var(--gold-light); font-style: italic; }
+    .hero-location {
+      font-size: .75rem; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-bottom: 2.5rem;
+      animation: heroFadeIn 1s .5s ease both;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; color: rgba(255,255,255,.7);
+      font-style: italic; margin-bottom: 3rem;
+      animation: heroFadeIn 1s .6s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+      animation: heroFadeIn 1s .75s ease both;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 1rem 2.5rem; font-size: .72rem; letter-spacing: .2em;
+      text-transform: uppercase; font-weight: 600;
+      transition: all .25s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,.4); color: var(--white);
+      padding: 1rem 2.5rem; font-size: .72rem; letter-spacing: .2em;
+      text-transform: uppercase; font-weight: 400;
+      transition: all .25s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.4);
+      animation: heroFadeIn 1s 1s ease both;
+    }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,168,76,.6), transparent); animation: scrollPulse 2s infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:.3;transform:scaleY(.8)} 50%{opacity:1;transform:scaleY(1)} }
+
+    /* ── SECTION COMMONS ── */
+    .section { padding: 6rem 4rem; }
+    .section-label {
+      font-size: .62rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); opacity: .5; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    .section-title em { font-style: italic; color: var(--navy-light); }
+    .section-sub { font-size: .9rem; color: var(--muted); line-height: 1.8; max-width: 520px; }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--navy);
+      padding: 3rem 4rem;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 0; border-top: 2px solid var(--gold);
+    }
+    .intro-stat {
+      padding: 2rem; text-align: center;
+      border-right: 1px solid rgba(201,168,76,.15);
+    }
+    .intro-stat:last-child { border-right: none; }
+    .intro-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; color: var(--gold); font-weight: 300; line-height: 1;
+    }
+    .intro-stat-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: .5rem; }
+
+    /* ── CHAMBRES ── */
+    .rooms-section { background: var(--cream); }
+    .rooms-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; }
+    .rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--gold-pale); }
+    .room-card {
+      background: var(--white); position: relative; overflow: hidden;
+      cursor: pointer; group: true;
+    }
+    .room-card:first-child { grid-row: span 2; }
+    .room-img { height: 320px; overflow: hidden; }
+    .room-card:first-child .room-img { height: 100%; min-height: 500px; }
+    .room-img img { height: 100%; transition: transform .6s ease; }
+    .room-card:hover .room-img img { transform: scale(1.04); }
+    .room-body { padding: 2rem; }
+    .room-tag {
+      font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: .6rem;
+    }
+    .room-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--navy); font-weight: 400; margin-bottom: .8rem;
+    }
+    .room-desc { font-size: .82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+    .room-features { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .room-feature { font-size: .7rem; color: var(--muted); display: flex; align-items: center; gap: .3rem; }
+    .room-feature svg { color: var(--gold); flex-shrink: 0; }
+    .room-price { display: flex; align-items: baseline; gap: .3rem; }
+    .room-price-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--navy); }
+    .room-price-unit { font-size: .7rem; color: var(--muted); }
+    .room-link {
+      position: absolute; bottom: 2rem; right: 2rem;
+      width: 40px; height: 40px; border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); transition: all .2s;
+    }
+    .room-card:hover .room-link { background: var(--gold); color: var(--navy); }
+
+    /* ── DISCOVER ── */
+    .discover-section {
+      background: var(--navy); padding: 6rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .discover-section::before {
+      content: 'MASOALA'; position: absolute; right: -2rem; top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Cormorant Garamond', serif; font-size: 10rem;
+      color: rgba(255,255,255,.03); font-weight: 600; pointer-events: none;
+      white-space: nowrap;
+    }
+    .discover-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .discover-images {
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px;
+      gap: .8rem; position: relative;
+    }
+    .discover-img { overflow: hidden; }
+    .discover-img img { height: 100%; transition: transform .5s; }
+    .discover-img:hover img { transform: scale(1.05); }
+    .discover-img:first-child { grid-row: span 2; }
+    .discover-text .section-label { color: var(--gold); }
+    .discover-text .section-label::after { background: var(--gold); }
+    .discover-text .section-title { color: var(--white); }
+    .discover-text .section-sub { color: rgba(255,255,255,.55); max-width: 480px; }
+    .discover-highlights { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .discover-hl {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding-bottom: 1.2rem; border-bottom: 1px solid rgba(201,168,76,.1);
+    }
+    .discover-hl:last-child { border-bottom: none; padding-bottom: 0; }
+    .discover-hl-icon {
+      width: 36px; height: 36px; border: 1px solid rgba(201,168,76,.3);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--gold); font-size: .9rem;
+    }
+    .discover-hl-title { font-size: .78rem; font-weight: 600; color: var(--white); margin-bottom: .2rem; letter-spacing: .05em; }
+    .discover-hl-desc { font-size: .78rem; color: rgba(255,255,255,.45); line-height: 1.6; }
+    .discover-btn { margin-top: 2.5rem; }
+
+    /* ── RESTAURANT ── */
+    .restaurant-section { background: var(--cream-dark); padding: 6rem 4rem; }
+    .restaurant-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .restaurant-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .rest-img { overflow: hidden; }
+    .rest-img img { height: 220px; transition: transform .5s; }
+    .rest-img:hover img { transform: scale(1.04); }
+    .rest-img:first-child { grid-column: span 2; }
+    .rest-img:first-child img { height: 280px; }
+    .restaurant-text { }
+    .restaurant-specials { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .special-item {
+      padding: 1.2rem; border: 1px solid var(--border);
+      background: rgba(255,255,255,.6);
+    }
+    .special-name { font-size: .78rem; font-weight: 600; color: var(--navy); margin-bottom: .2rem; }
+    .special-desc { font-size: .72rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── TRIPADVISOR BAND ── */
+    .ta-band {
+      background: var(--gold); padding: 2.5rem 4rem;
+      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ta-band-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--navy); font-weight: 400;
+    }
+    .ta-stars { display: flex; gap: .2rem; }
+    .ta-star { color: var(--navy); font-size: 1.1rem; }
+    .ta-count { font-size: .78rem; color: var(--navy-light); }
+    .ta-link {
+      background: var(--navy); color: var(--white);
+      padding: .7rem 1.8rem; font-size: .7rem; letter-spacing: .18em;
+      text-transform: uppercase; font-weight: 500; transition: all .2s;
+    }
+    .ta-link:hover { background: var(--navy-mid); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: var(--white); padding: 6rem 4rem; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3.5rem; }
+    .testi-card {
+      padding: 2.5rem; background: var(--cream);
+      border-top: 2px solid var(--gold); position: relative;
+    }
+    .testi-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; color: var(--gold); line-height: .8; margin-bottom: 1rem; opacity: .5;
+    }
+    .testi-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; color: var(--text); line-height: 1.7; font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .testi-country { font-size: .68rem; color: var(--gold); margin-top: .2rem; }
+
+    /* ── CTA STRIP ── */
+    .cta-section {
+      background: var(--navy-mid); padding: 5rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; right: -100px; top: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.08) 0%, transparent 70%);
+    }
+    .cta-text {}
+    .cta-label { font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--white); font-weight: 300; line-height: 1.2; }
+    .cta-sub { font-size: .85rem; color: rgba(255,255,255,.5); margin-top: .8rem; }
+    .cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); }
+    .ft-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; padding: 4rem 4rem 3rem;
+      border-bottom: 1px solid rgba(201,168,76,.1);
+    }
+    .ft-brand {}
+    .ft-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; color: var(--white); margin-bottom: .3rem;
+    }
+    .ft-brand-name span { color: var(--gold); }
+    .ft-brand-loc { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1.2rem; }
+    .ft-brand-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 280px; }
+    .ft-social { display: flex; gap: .8rem; margin-top: 1.5rem; }
+    .ft-social a {
+      width: 34px; height: 34px; border: 1px solid rgba(201,168,76,.25);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.4); font-size: .75rem; transition: all .2s;
+    }
+    .ft-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .ft-col-title { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-weight: 500; }
+    .ft-links-list { display: flex; flex-direction: column; gap: .7rem; }
+    .ft-links-list a { font-size: .82rem; color: rgba(255,255,255,.45); transition: color .2s; }
+    .ft-links-list a:hover { color: var(--gold-light); }
+    .ft-contact-item { display: flex; gap: .7rem; align-items: flex-start; margin-bottom: .9rem; }
+    .ft-contact-item svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .ft-contact-item span { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.5; }
+    .ft-bottom {
+      padding: 1.5rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .ft-copy { font-size: .72rem; color: rgba(255,255,255,.25); }
+    .ft-bottom-links { display: flex; gap: 1.5rem; }
+    .ft-bottom-links a { font-size: .68rem; color: rgba(255,255,255,.25); letter-spacing: .1em; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      nav { padding: 1rem 1.5rem; }
+      nav.scrolled { padding: .8rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 4rem 1.5rem; }
+      .intro-strip { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+      .rooms-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .room-card:first-child { grid-row: auto; }
+      .room-card:first-child .room-img { min-height: 280px; }
+      .discover-inner, .restaurant-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .discover-images { grid-template-rows: 180px 180px; }
+      .discover-images .discover-img:first-child { grid-row: auto; grid-column: span 2; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .cta-section { flex-direction: column; text-align: center; padding: 3.5rem 1.5rem; }
+      .ft-top { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem 2rem; }
+      .ft-bottom { padding: 1.5rem; flex-direction: column; text-align: center; }
+      .hero-deco-left { display: none; }
+      .discover-section { padding: 4rem 1.5rem; }
+      .restaurant-section { padding: 4rem 1.5rem; }
+      .ta-band { padding: 2rem 1.5rem; }
+      .testi-section { padding: 4rem 1.5rem; }
+      .cta-actions { justify-content: center; }
+    }
+    @media(max-width:480px){
+      .intro-strip { grid-template-columns: 1fr 1fr; }
+      .ft-top { grid-template-columns: 1fr; }
+      .restaurant-specials { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  
+/* === Masoala Experiences inter-sites bar — premium clean v2 === */
+:root{--mx-sitebar-height:34px;}
+html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
+body{padding-top:var(--mx-sitebar-height);}
+.mx-sitebar{
+  position:fixed;top:0;left:0;right:0;z-index:10000;
+  height:var(--mx-sitebar-height);
+  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
+  border-bottom:1px solid rgba(232,213,163,.18);
+  box-shadow:0 8px 26px rgba(0,0,0,.18);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  font-family:inherit;
+}
+.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
+.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
+.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
+.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
+.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
+nav{top:var(--mx-sitebar-height)!important;}
+.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
+@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
+@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
+
+</style>
+</head>
+<body>
+<!-- MASOALA EXPERIENCES SITEBAR -->
+<div class="mx-sitebar" aria-label="Navigation Masoala Experiences">
+  <div class="mx-sitebar-inner">
+    <a class="mx-sitebar-brand" href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">Masoala Experiences</a>
+    <div class="mx-sitebar-links">
+      <a href="https://manga-beach-hotel.netlify.app/" target="_blank" rel="noopener">🏨 Manga Beach</a>
+      <a href="https://paradise-valley-ambanizana.netlify.app/" target="_blank" rel="noopener">🌿 Paradise Valley</a>
+      <a href="https://peche-sportive-masoala.netlify.app/" target="_blank" rel="noopener">🎣 Pêche Masoala</a>
+      <a href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">◉ Hub</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="chambres.html">Chambres</a>
+  <a href="restaurant.html">Restaurant</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="contact.html">Contact</a>
+  <a href="reservation.html" class="mob-cta">Réserver</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">MB</div>
+    <div class="nav-logo-text">
+      <strong>Manga Beach</strong>
+      <span>Hotel Madagascar</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Accueil</a>
+    <a href="chambres.html">Chambres</a>
+    <a href="restaurant.html">Restaurant</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="reservation.html" class="nav-cta">Réserver</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-img-overlay"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-deco-left">
+    <div class="deco-line"></div>
+    <div class="deco-dot"></div>
+    <div class="deco-line"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Maroantsetra · Côte Est · Madagascar</div>
+    <h1 class="hero-title">Manga Beach<br><em>Hotel</em></h1>
+    <p class="hero-location">Baie d'Antongil · Parc National de Masoala</p>
+    <p class="hero-sub">Où chaque séjour est unique.</p>
+    <div class="hero-actions">
+      <a href="reservation.html" class="btn-primary">Réserver votre séjour</a>
+      <a href="chambres.html" class="btn-outline">Découvrir nos chambres</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Découvrir
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="intro-strip">
+  <div class="intro-stat">
+    <div class="intro-stat-num">12+</div>
+    <div class="intro-stat-label">Années d'expérience</div>
+  </div>
+  <div class="intro-stat">
+    <div class="intro-stat-num">240k</div>
+    <div class="intro-stat-label">Ha · Parc Masoala</div>
+  </div>
+  <div class="intro-stat">
+    <div class="intro-stat-num">24/7</div>
+    <div class="intro-stat-label">Service continu</div>
+  </div>
+  <div class="intro-stat">
+    <div class="intro-stat-num">★ 4.5</div>
+    <div class="intro-stat-label">TripAdvisor</div>
+  </div>
+</div>
+
+<!-- CHAMBRES -->
+<section class="section rooms-section">
+  <div class="rooms-header">
+    <div>
+      <div class="section-label">Hébergement</div>
+      <h2 class="section-title">Nos <em>chambres</em> &amp; suites</h2>
+      <p class="section-sub">Des espaces pensés pour votre confort, avec vue sur la nature luxuriante de Maroantsetra.</p>
+    </div>
+    <a href="chambres.html" class="btn-primary" style="white-space:nowrap">Voir toutes les chambres</a>
+  </div>
+  <div class="rooms-grid">
+    <!-- Chambre Familiale -->
+    <div class="room-card">
+      <div class="room-img">
+        <img src="assets/chambre-familiale.jpg" alt="Chambre Familiale" onerror="this.style.background='linear-gradient(135deg,#0a1628,#1a3a5c)';this.alt=''"/>
+      </div>
+      <div class="room-body">
+        <div class="room-tag">Chambre signature</div>
+        <div class="room-name">Chambre Familiale</div>
+        <p class="room-desc">Spacieuse et lumineuse, idéale pour les familles. Lits à baldaquin en bois local, moustiquaires, vue dégagée.</p>
+        <div class="room-features">
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4h8v6H2z"/><path d="M0 4h12v1H0z"/></svg> 2 Lits doubles</span>
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M6 3v3l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Wi-Fi</span>
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M1 9V5l5-4 5 4v4H8V7H4v2z"/></svg> Terrasse</span>
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 2h8v8H2z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M5 4l3 2-3 2V4z"/></svg> TV</span>
+        </div>
+        <div class="room-price">
+          <span class="room-price-num">Sur demande</span>
+        </div>
+      </div>
+      <a href="chambres.html" class="room-link" aria-label="Voir la chambre">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <!-- Chambre Double -->
+    <div class="room-card">
+      <div class="room-img" style="height:320px">
+        <img src="assets/chambre-double.jpg" alt="Chambre Double" onerror="this.style.background='linear-gradient(135deg,#112240,#1a4060)';this.alt=''"/>
+      </div>
+      <div class="room-body">
+        <div class="room-tag">Chambre confort</div>
+        <div class="room-name">Chambre Double</div>
+        <p class="room-desc">Élégante et reposante, vue panoramique sur le jardin et la baie d'Antongil.</p>
+        <div class="room-features">
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 4h8v6H2z"/><path d="M0 4h12v1H0z"/></svg> Grand lit</span>
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M6 3v3l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> Wi-Fi</span>
+          <span class="room-feature"><svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M2 2h8v8H2z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M5 4l3 2-3 2V4z"/></svg> TV</span>
+        </div>
+        <div class="room-price">
+          <span class="room-price-num">Sur demande</span>
+        </div>
+      </div>
+      <a href="chambres.html" class="room-link" aria-label="Voir la chambre">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DÉCOUVRIR -->
+<section class="discover-section">
+  <div class="discover-inner">
+    <div class="discover-images">
+      <div class="discover-img">
+        <img src="assets/masoala.jpg" alt="Parc Masoala" height="408" onerror="this.style.cssText='background:linear-gradient(135deg,#0d2a4a,#1a5070);height:100%;display:block'"/>
+      </div>
+      <div class="discover-img">
+        <img src="assets/baleines.jpg" alt="Baleines" height="200" onerror="this.style.cssText='background:linear-gradient(135deg,#112240,#1a4060);height:100%;display:block'"/>
+      </div>
+      <div class="discover-img">
+        <img src="assets/peche.jpg" alt="Pêche sportive" height="200" onerror="this.style.cssText='background:linear-gradient(135deg,#0a2040,#163060);height:100%;display:block'"/>
+      </div>
+    </div>
+    <div class="discover-text">
+      <div class="section-label">Maroantsetra</div>
+      <h2 class="section-title" style="color:var(--white)">La nature à l'état <em style="color:var(--gold-light)">brut</em></h2>
+      <p class="section-sub">Bienvenue au pays de la vanille, bordé par la baie d'Antongil et le Parc National de Masoala — l'une des dernières forêts primaires de Madagascar.</p>
+      <div class="discover-highlights">
+        <div class="discover-hl">
+          <div class="discover-hl-icon">🐋</div>
+          <div>
+            <div class="discover-hl-title">Baleines à bosse</div>
+            <div class="discover-hl-desc">De juillet à septembre, venez observer ces géants des mers dans la baie d'Antongil.</div>
+          </div>
+        </div>
+        <div class="discover-hl">
+          <div class="discover-hl-icon">🎣</div>
+          <div>
+            <div class="discover-hl-title">Pêche sportive</div>
+            <div class="discover-hl-desc">80 km de long sur 20 km de large au large du Cap Masoala — un terrain de jeu inexploité.</div>
+          </div>
+        </div>
+        <div class="discover-hl">
+          <div class="discover-hl-icon">🦎</div>
+          <div>
+            <div class="discover-hl-title">Écotourisme</div>
+            <div class="discover-hl-desc">240 000 ha de forêt primaire, lémuriens, papillons géants et espèces endémiques.</div>
+          </div>
+        </div>
+      </div>
+      <div class="discover-btn">
+        <a href="contact.html" class="btn-primary">Préparer votre aventure</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESTAURANT -->
+<section class="restaurant-section">
+  <div class="restaurant-inner">
+    <div class="restaurant-text">
+      <div class="section-label">Gastronomie</div>
+      <h2 class="section-title">Notre <em>restaurant</em></h2>
+      <p class="section-sub">Une cuisine qui met à l'honneur les saveurs locales — fruits de mer frais, produits du marché de Maroantsetra, recettes malgaches revisitées.</p>
+      <div class="restaurant-specials">
+        <div class="special-item">
+          <div class="special-name">🦐 Fruits de mer</div>
+          <div class="special-desc">Crevettes, langoustes et poissons pêchés du jour.</div>
+        </div>
+        <div class="special-item">
+          <div class="special-name">🥭 Saveurs locales</div>
+          <div class="special-desc">Vanille, litchi, fruits tropicaux de la région.</div>
+        </div>
+        <div class="special-item">
+          <div class="special-name">🍷 Boissons</div>
+          <div class="special-desc">Bar complet, cocktails et jus de fruits frais.</div>
+        </div>
+        <div class="special-item">
+          <div class="special-name">🌅 Terrasse</div>
+          <div class="special-desc">Dîner avec vue sur la nature environnante.</div>
+        </div>
+      </div>
+      <a href="restaurant.html" class="btn-primary" style="display:inline-block;margin-top:2rem">Voir le restaurant</a>
+    </div>
+    <div class="restaurant-gallery">
+      <div class="rest-img">
+        <img src="assets/restaurant-main.jpg" alt="Restaurant" onerror="this.style.cssText='background:linear-gradient(135deg,#1a2332,#2a3d5a);height:280px;display:block'"/>
+      </div>
+      <div class="rest-img">
+        <img src="assets/restaurant-2.jpg" alt="Salle restaurant" onerror="this.style.cssText='background:linear-gradient(135deg,#112240,#1a3a5c);height:220px;display:block'"/>
+      </div>
+      <div class="rest-img">
+        <img src="assets/restaurant-3.jpg" alt="Plats" onerror="this.style.cssText='background:linear-gradient(135deg,#0d2a4a,#163060);height:220px;display:block'"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIPADVISOR BAND -->
+<div class="ta-band">
+  <div class="ta-stars">★★★★☆</div>
+  <div class="ta-band-text">Très bien noté sur TripAdvisor</div>
+  <div class="ta-count">par nos voyageurs du monde entier</div>
+  <a href="https://www.tripadvisor.com" target="_blank" class="ta-link">Voir les avis</a>
+</div>
+
+<!-- TÉMOIGNAGES -->
+<section class="testi-section">
+  <div style="text-align:center;max-width:500px;margin:0 auto">
+    <div class="section-label" style="justify-content:center">Avis voyageurs</div>
+    <h2 class="section-title" style="text-align:center">Ce qu'ils <em>disent</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Un endroit magique, hors du temps. Le personnel est aux petits soins et la vue sur la baie est à couper le souffle. Nous reviendrons sans hésiter.</p>
+      <div class="testi-author">Marie & Pierre L.</div>
+      <div class="testi-country">🇫🇷 France</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Les baleines à bosse de juillet, la forêt primaire de Masoala, les fruits de mer frais… Manga Beach a rendu ce voyage inoubliable.</p>
+      <div class="testi-author">Thomas W.</div>
+      <div class="testi-country">🇩🇪 Allemagne</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Rapport qualité-prix excellent, chambres très confortables et cuisine délicieuse. L'accueil chaleureux de l'équipe fait toute la différence.</p>
+      <div class="testi-author">Isabelle M.</div>
+      <div class="testi-country">🇧🇪 Belgique</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA RÉSERVATION -->
+<section class="cta-section">
+  <div class="cta-text">
+    <div class="cta-label">Réservation en ligne</div>
+    <h2 class="cta-title">Prêt pour votre<br>séjour à Maroantsetra ?</h2>
+    <p class="cta-sub">Confirmation sous 24h · Paiement sur place possible</p>
+  </div>
+  <div class="cta-actions">
+    <a href="reservation.html" class="btn-primary">Réserver maintenant</a>
+    <a href="contact.html" class="btn-outline">Nous contacter</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="ft-brand-name">Manga Beach <span>Hotel</span></div>
+      <div class="ft-brand-loc">Maroantsetra · Madagascar</div>
+      <p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p>
+      <div class="ft-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">in</a>
+        <a href="#" aria-label="TripAdvisor">ta</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Navigation</div>
+      <div class="ft-links-list">
+        <a href="index.html">Accueil</a>
+        <a href="chambres.html">Chambres</a>
+        <a href="restaurant.html">Restaurant</a>
+        <a href="galerie.html">Galerie</a>
+        <a href="reservation.html">Réservation</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Services</div>
+      <div class="ft-links-list">
+        <a href="#">Pêche sportive</a>
+        <a href="#">Observation baleines</a>
+        <a href="#">Parc Masoala</a>
+        <a href="#">Transferts</a>
+        <a href="#">Restaurant</a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Contact</div>
+      <div class="ft-contact-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 1C4.24 1 2 3.24 2 6c0 3.87 5 7 5 7s5-3.13 5-7c0-2.76-2.24-5-5-5z"/><circle cx="7" cy="6" r="1.5"/></svg>
+        <span>R1 011 Androkaroka<br>BP 73 Maroantsetra</span>
+      </div>
+      <div class="ft-contact-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 3h10v8H2zM2 3l5 5 5-5"/></svg>
+        <span>mangabeach.hotel@yahoo.com</span>
+      </div>
+      <div class="ft-contact-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 2.5c0 5.8 4.7 10.5 10.5 10.5V10L9 8.5 7.5 10C6 9 4 7 3 5.5L4.5 4 3 .5H2.5L2 2.5z"/></svg>
+        <span>+261 32 54 789 04<br>+261 34 07 019 77</span>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 Manga Beach Hotel Madagascar. Tous droits réservés.</div>
+    <div class="ft-bottom-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.room-card, .testi-card, .discover-hl, .special-item').forEach(el => {
+    el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
