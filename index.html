@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manga Beach Hotel Madagascar — Maroantsetra</title>
+  <title>Manga Beach Hôtel Maroantsetra — Maroantsetra</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
@@ -51,9 +51,10 @@
       font-size: 1.1rem; color: var(--navy); font-weight: 600;
       flex-shrink: 0;
     }
-    .nav-logo-text { font-family: 'Cormorant Garamond', serif; }
-    .nav-logo-text strong { display: block; font-size: 1.15rem; color: var(--white); font-weight: 600; letter-spacing: .04em; }
-    .nav-logo-text span { font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-light); font-family: 'Jost', sans-serif; font-weight: 300; }
+    .nav-logo-text { font-family: 'Cormorant Garamond', serif; display:flex; flex-direction:column; gap:.2rem; position:relative; padding-left:1rem; }
+    .nav-logo-text::before { content:''; position:absolute; left:0; top:.2rem; bottom:.2rem; width:1px; background:linear-gradient(to bottom, transparent, var(--gold), transparent); opacity:.9; }
+    .nav-logo-text strong { display:block; font-size:1.18rem; color:var(--white); font-weight:600; letter-spacing:.12em; text-transform:uppercase; line-height:1; }
+    .nav-logo-text span { font-size:.56rem; letter-spacing:.34em; text-transform:uppercase; color:var(--gold-light); font-family:'Jost', sans-serif; font-weight:400; line-height:1.2; }
     .nav-links { display: flex; gap: 2.5rem; align-items: center; }
     .nav-links a { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.8); font-weight: 500; transition: color .2s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s; }
@@ -369,10 +370,10 @@
     .ft-brand {}
     .ft-brand-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; color: var(--white); margin-bottom: .3rem;
+      font-size: 1.55rem; color: var(--white); margin-bottom: .55rem; line-height: 1.08; letter-spacing: .08em; text-transform: uppercase;
     }
-    .ft-brand-name span { color: var(--gold); }
-    .ft-brand-loc { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1.2rem; }
+    .ft-brand-name span { display:block; color: var(--gold-light); font-family:'Jost', sans-serif; font-size:.58rem; letter-spacing:.34em; text-transform:uppercase; margin-top:.45rem; font-weight:500; }
+    .ft-brand-loc { font-size: .66rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1.2rem; }
     .ft-brand-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.7; max-width: 280px; }
     .ft-social { display: flex; gap: .8rem; margin-top: 1.5rem; }
     .ft-social a {
@@ -474,6 +475,11 @@ nav{top:var(--mx-sitebar-height)!important;}
 .boat-tariffs-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
 @media(max-width:900px){.boat-tariffs-grid{grid-template-columns:1fr}.boat-tariffs-actions .btn-primary,.boat-tariffs-actions .btn-outline{width:100%;text-align:center}.boat-tariff-row{flex-direction:column;gap:.15rem}}
 
+
+.nav-logo-mark{width:58px;height:58px;object-fit:contain;display:block;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.22));}
+.ft-brand-logo{width:140px;max-width:100%;height:auto;display:block;object-fit:contain;margin:0 0 1rem 0;filter:drop-shadow(0 10px 24px rgba(0,0,0,.18));}
+@media(max-width:900px){.nav-logo-mark{width:52px;height:52px}.ft-brand-logo{width:120px}}
+
 </style>
 </head>
 <body>
@@ -504,10 +510,10 @@ nav{top:var(--mx-sitebar-height)!important;}
 <!-- NAV -->
 <nav id="navbar">
   <a href="index.html" class="nav-logo">
-    <div class="nav-logo-icon">MB</div>
+    
     <div class="nav-logo-text">
       <strong>Manga Beach</strong>
-      <span>Hotel Madagascar</span>
+      <span>Hôtel Maroantsetra</span>
     </div>
   </a>
   <div class="nav-links">
@@ -686,7 +692,7 @@ nav{top:var(--mx-sitebar-height)!important;}
   <div style="max-width:1200px;margin:0 auto">
     <div class="section-label">Transferts & excursions</div>
     <h2 class="section-title">Tarifs bateau <em>Manga Beach</em></h2>
-    <p class="section-sub">Depuis Manga Beach Hotel, nous pouvons organiser vos transferts en bateau, sorties vers Nosy Mangabe, Parc Masoala, Ambanizana, observation baleines et pêche sportive.</p>
+    <p class="section-sub">Depuis Manga Beach Hôtel Maroantsetra, nous pouvons organiser vos transferts en bateau, sorties vers Nosy Mangabe, Parc Masoala, Ambanizana, observation baleines et pêche sportive.</p>
 
     <div class="boat-tariffs-grid">
       <div class="boat-tariff-card featured">
@@ -728,7 +734,7 @@ nav{top:var(--mx-sitebar-height)!important;}
       <div class="restaurant-specials">
         <div class="special-item">
           <div class="special-name">🦐 Fruits de mer</div>
-          <div class="special-desc">Crevettes et poissons pêchés du jour.</div>
+          <div class="special-desc">Crevettes, langoustes et poissons pêchés du jour.</div>
         </div>
         <div class="special-item">
           <div class="special-name">🥭 Saveurs locales</div>
@@ -740,7 +746,7 @@ nav{top:var(--mx-sitebar-height)!important;}
         </div>
         <div class="special-item">
           <div class="special-name">🌅 Terrasse</div>
-          <div class="special-desc">Dîner avec vue sur la rive d'Anjanambo.</div>
+          <div class="special-desc">Dîner avec vue sur la nature environnante.</div>
         </div>
       </div>
       <a href="restaurant.html" class="btn-primary" style="display:inline-block;margin-top:2rem">Voir le restaurant</a>
@@ -812,13 +818,13 @@ nav{top:var(--mx-sitebar-height)!important;}
 <footer>
   <div class="ft-top">
     <div class="ft-brand">
-      <div class="ft-brand-name">Manga Beach <span>Hotel</span></div>
+      <div class="ft-brand-name">Manga Beach<span>Hôtel Maroantsetra</span></div>
       <div class="ft-brand-loc">Maroantsetra · Madagascar</div>
       <p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p>
       <div class="ft-social">
         <a href="#" aria-label="Facebook">f</a>
         <a href="#" aria-label="Instagram">in</a>
-        <a href="#" aria-label="TripAdvisor">ta</a>
+        <a href="https://www.tripadvisor.com/Hotel_Review-g298272-d8656412-Reviews-Manga_Beach_Hotel-Maroantsetra_Toamasina_Province.html" target="_blank" rel="noopener" aria-label="TripAdvisor">ta</a>
       </div>
     </div>
     <div>
@@ -859,7 +865,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     </div>
   </div>
   <div class="ft-bottom">
-    <div class="ft-copy">© 2025 Manga Beach Hotel Madagascar. Tous droits réservés.</div>
+    <div class="ft-copy">© 2025 Manga Beach Hôtel Maroantsetra. Tous droits réservés.</div>
     <div class="ft-bottom-links">
       <a href="#">Mentions légales</a>
       <a href="#">Confidentialité</a>
