@@ -140,37 +140,16 @@ select#requestType{border-color:rgba(201,168,76,.38);background:#fffdf7;font-wei
           <div class="full" id="roomFieldWrap">
             <label>Chambre / hébergement</label>
             <select name="Chambre" id="room">
-              <option value="À conseiller" data-price="" data-category="À conseiller" selected>À conseiller</option>
-
-              <optgroup label="Chambres familiales · 201 500 Ar / nuit">
-                <option value="Chambre Familiale 208" data-price="201500" data-category="Chambre Familiale" data-room-code="208">208 — Chambre Familiale</option>
-                <option value="Chambre Familiale 209" data-price="201500" data-category="Chambre Familiale" data-room-code="209">209 — Chambre Familiale</option>
-                <option value="Chambre Familiale 210" data-price="201500" data-category="Chambre Familiale" data-room-code="210">210 — Chambre Familiale</option>
-              </optgroup>
-
-              <optgroup label="Chambres double / single · 151 500 Ar / nuit">
-                <option value="Chambre Double / Single 201" data-price="151500" data-category="Chambre Double / Single" data-room-code="201">201 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 202" data-price="151500" data-category="Chambre Double / Single" data-room-code="202">202 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 203" data-price="151500" data-category="Chambre Double / Single" data-room-code="203">203 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 204" data-price="151500" data-category="Chambre Double / Single" data-room-code="204">204 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 205" data-price="151500" data-category="Chambre Double / Single" data-room-code="205">205 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 206" data-price="151500" data-category="Chambre Double / Single" data-room-code="206">206 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single 207" data-price="151500" data-category="Chambre Double / Single" data-room-code="207">207 — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Mangoustan" data-price="151500" data-category="Chambre Double / Single" data-room-code="Mangoustan">Mangoustan — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Mûre" data-price="151500" data-category="Chambre Double / Single" data-room-code="Mûre">Mûre — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Menthe" data-price="151500" data-category="Chambre Double / Single" data-room-code="Menthe">Menthe — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Melon" data-price="151500" data-category="Chambre Double / Single" data-room-code="Melon">Melon — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Myrte" data-price="151500" data-category="Chambre Double / Single" data-room-code="Myrte">Myrte — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Mangue" data-price="151500" data-category="Chambre Double / Single" data-room-code="Mangue">Mangue — Chambre Double / Single</option>
-                <option value="Chambre Double / Single Mirabelle" data-price="151500" data-category="Chambre Double / Single" data-room-code="Mirabelle">Mirabelle — Chambre Double / Single</option>
-              </optgroup>
+              <option value="" data-price="" data-category="" data-room-code="" selected>Choisir une chambre</option>
+              <option value="Chambre Familiale" data-price="201500" data-category="Chambre Familiale" data-room-code="familiale">Chambre Familiale — 201 500 Ar / nuit</option>
+              <option value="Chambre Double" data-price="151500" data-category="Chambre Double" data-room-code="double">Chambre Double — 151 500 Ar / nuit</option>
             </select>
-            <div class="field-note" id="roomFieldNote">Choisissez une chambre précise ou laissez “À conseiller” pour recevoir une proposition adaptée.</div>
+            <div class="field-note" id="roomFieldNote">Choisissez une Chambre Familiale ou une Chambre Double pour afficher le tarif estimatif. Si vous souhaitez Mangue, précisez-le dans le message.</div>
           </div>
 
           <div class="full room-help" id="roomHelpBox">
-            <strong>Chambre à conseiller</strong><br>
-            Nous vous proposons l’option la plus adaptée selon vos dates, le nombre de voyageurs et votre type de séjour.
+            <strong>Choix de la chambre</strong><br>
+            Sélectionnez une Chambre Familiale ou une Chambre Double pour afficher le tarif estimatif selon vos dates.
           </div>
 
           <div>
@@ -221,7 +200,7 @@ select#requestType{border-color:rgba(201,168,76,.38);background:#fffdf7;font-wei
 
       <div class="summary-line">
         <span>Chambre</span>
-        <strong id="sumRoom">À conseiller</strong>
+        <strong id="sumRoom">—</strong>
       </div>
 
       <div class="summary-line">
@@ -270,7 +249,7 @@ select#requestType{border-color:rgba(201,168,76,.38);background:#fffdf7;font-wei
 
       <div class="request-context" id="requestContext">
         <strong>Séjour Manga Beach Hotel</strong><br>
-        Choisissez votre chambre, vos dates et le nombre de voyageurs. Nous confirmons ensuite la disponibilité.
+        Choisissez votre catégorie de chambre, vos dates et le nombre de voyageurs. Nous confirmons ensuite la disponibilité.
       </div>
     </aside>
   </div>
@@ -384,16 +363,19 @@ function getSelectedOption(){
 
 function getRoomData(){
   const option = getSelectedOption();
-  if(!option) return { value: 'À conseiller', label: 'À conseiller', price: 0, category: 'À confirmer', roomCode: '', comfort: '' };
+  if(!option) return { value: '', label: '—', price: 0, category: 'À confirmer', roomCode: '', comfort: '' };
 
-  const value = option.value || 'À conseiller';
-  const label = option.textContent.trim() || value;
+  const value = option.value || '';
+  let label = option.textContent.trim() || value;
   const price = Number(option.dataset.price || 0);
-  const category = option.dataset.category || 'À confirmer';
+  const category = option.dataset.category || '';
   const roomCode = option.dataset.roomCode || '';
+  if(!price && !category){
+    label = '—';
+  }
   const comfort = category === 'Chambre Familiale'
     ? '1 grand lit, 1 petit lit, sanitaire, Wi‑Fi, tout le confort.'
-    : category === 'Chambre Double / Single'
+    : category === 'Chambre Double'
       ? '1 grand lit king size, sanitaire, Wi‑Fi, tout le confort.'
       : 'Nous vous proposerons une chambre adaptée.';
   return { value, label, price, category, roomCode, comfort };
@@ -447,19 +429,19 @@ function updateRoomHelp(){
   }
 
   if(roomData.price && roomData.category === 'Chambre Familiale'){
-    roomFieldNote.textContent = 'Chambres 208, 209, 210 — 201 500 Ar / nuit.';
+    roomFieldNote.textContent = 'Chambre Familiale — 201 500 Ar / nuit.';
     roomHelpBox.innerHTML = '<strong>' + roomData.label + '</strong><br>' + roomData.comfort;
     return;
   }
 
-  if(roomData.price && roomData.category === 'Chambre Double / Single'){
-    roomFieldNote.textContent = 'Chambres 201 à 207 + Mangoustan, Mûre, Menthe, Melon, Myrte, Mangue, Mirabelle — 151 500 Ar / nuit.';
-    roomHelpBox.innerHTML = '<strong>' + roomData.label + '</strong><br>' + roomData.comfort;
+  if(roomData.price && roomData.category === 'Chambre Double'){
+    roomFieldNote.textContent = 'Chambre Double — 151 500 Ar / nuit. Exception : chambre Mangue — 111 500 Ar / nuit.';
+    roomHelpBox.innerHTML = '<strong>' + roomData.label + '</strong><br>' + roomData.comfort + '<br><br><strong>Note :</strong> si vous souhaitez la chambre Mangue, indiquez-le dans votre message. Son tarif est de 111 500 Ar / nuit.';
     return;
   }
 
-  roomFieldNote.textContent = 'Choisissez une chambre précise ou laissez “À conseiller” pour recevoir une proposition adaptée.';
-  roomHelpBox.innerHTML = '<strong>Chambre à conseiller</strong><br>Nous vous proposons l’option la plus adaptée selon vos dates, le nombre de voyageurs et votre type de séjour.';
+  roomFieldNote.textContent = 'Choisissez une Chambre Familiale ou une Chambre Double pour afficher le tarif estimatif. Si vous souhaitez Mangue, précisez-le dans le message.';
+  roomHelpBox.innerHTML = '<strong>Choix de la chambre</strong><br>Sélectionnez une Chambre Familiale ou une Chambre Double pour afficher le tarif estimatif selon vos dates. Si vous souhaitez la chambre Mangue, indiquez-le dans votre message : 111 500 Ar / nuit.';
 }
 
 function updateSummary(){
@@ -476,7 +458,7 @@ function updateSummary(){
 
   if(cfg.showRoom){
     document.getElementById('sumRoom').textContent = roomData.label;
-    document.getElementById('sumCategory').textContent = roomData.category === 'À conseiller' ? 'À confirmer' : roomData.category;
+    document.getElementById('sumCategory').textContent = roomData.category ? roomData.category : 'À confirmer';
     document.getElementById('sumRate').textContent = roomData.price ? formatAriary(roomData.price) : 'À confirmer';
     document.getElementById('sumTotal').textContent = total ? formatAriaryTotal(total) : '—';
   } else {
@@ -492,6 +474,9 @@ function updateSummary(){
   let contextText = '<strong>' + requestType.value + '</strong><br>' + cfg.context;
   if(cfg.showRoom && roomData.price){
     contextText += '<br><br><strong>' + roomData.label + '</strong><br>' + roomData.comfort;
+    if(roomData.category === 'Chambre Double'){
+      contextText += '<br><br><strong>Note :</strong> si vous souhaitez la chambre Mangue, indiquez-le dans votre message. Son tarif est de 111 500 Ar / nuit selon disponibilité.';
+    }
   }
   requestContext.innerHTML = contextText;
 
@@ -499,7 +484,7 @@ function updateSummary(){
   document.getElementById('hiddenGuests').value = travellersText();
   document.getElementById('hiddenNights').value = n && n > 0 ? n + ' nuit' + (n > 1 ? 's' : '') : 'Non précisé';
   document.getElementById('hiddenTotal').value = total ? formatAriaryTotal(total) : 'À confirmer / sur devis';
-  document.getElementById('hiddenCategory').value = cfg.showRoom ? (roomData.category === 'À conseiller' ? 'À confirmer' : roomData.category) : 'Service / activité';
+  document.getElementById('hiddenCategory').value = cfg.showRoom ? (roomData.category || 'À confirmer') : 'Service / activité';
 }
 
 function syncMessageSuggestion(){
@@ -567,13 +552,11 @@ function prefillFromParams(){
   if(roomParam){
     const normalizedParam = normalizeString(roomParam);
     const aliasToRoomCode = {
-      familiale: '208',
-      family: '208',
-      double: '201',
-      single: '201',
-      doublesingle: '201',
-      chambrefamiliale: '208',
-      chambredoublesingle: '201'
+      familiale: 'familiale',
+      family: 'familiale',
+      double: 'double',
+      chambrefamiliale: 'familiale',
+      chambredouble: 'double',
     };
     const targetParam = aliasToRoomCode[normalizedParam] || normalizedParam;
     [...room.options].forEach(option => {
@@ -596,7 +579,7 @@ function prefillFromParams(){
 function resetFormState(){
   f.reset();
   requestType.value = 'Séjour Manga Beach Hotel';
-  room.value = 'À conseiller';
+  room.selectedIndex = 0;
   adults.value = 2;
   children.value = 0;
   arrival.min = todayISO;
