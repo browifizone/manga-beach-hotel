@@ -45,6 +45,23 @@ nav{top:var(--mx-sitebar-height)!important;}
 .boat-tariffs-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
 @media(max-width:900px){.boat-tariffs-grid{grid-template-columns:1fr}.boat-tariffs-actions .btn-primary,.boat-tariffs-actions .btn-outline{width:100%;text-align:center}.boat-tariff-row{flex-direction:column;gap:.15rem}}
 
+
+/* === Reservation centrale Masoala Experiences === */
+.request-highlight{background:linear-gradient(135deg,var(--gold-pale),#fff);border:1px solid var(--border);padding:1rem;margin:1.2rem 0 1.4rem;font-size:.84rem;line-height:1.7;color:var(--navy-light)}
+.request-highlight strong{color:var(--navy)}
+select#requestType{border-color:rgba(201,168,76,.38);background:#fffdf7;font-weight:500;color:var(--navy)}
+.summary-badge{display:inline-block;background:var(--gold-pale);color:var(--navy);padding:.25rem .55rem;font-size:.72rem;line-height:1.35;text-align:right}
+@media(max-width:900px){.request-highlight{margin-top:0}}
+
+
+/* === Résumé dynamique intelligent === */
+.summary-tariff-status{display:inline-block;text-align:right;font-size:.78rem;line-height:1.45;color:var(--navy)}
+.summary-tariff-status.custom{color:#7d5a13}
+.summary-tariff-status.hotel{color:#1a3a5c}
+.request-context{margin-top:1rem;padding:1rem;background:linear-gradient(135deg,#fffaf0,#fff);border:1px solid var(--border);font-size:.84rem;line-height:1.65;color:var(--navy-light)}
+.request-context strong{color:var(--navy)}
+#submitBtnText{display:inline-block}
+
 </style></head><body>
 <!-- MASOALA EXPERIENCES SITEBAR -->
 <div class="mx-sitebar" aria-label="Navigation Masoala Experiences">
@@ -58,21 +75,27 @@ nav{top:var(--mx-sitebar-height)!important;}
     </div>
   </div>
 </div>
-<div class="mobile-menu" id="mobile-menu"><a href="index.html" class="">Accueil</a><a href="chambres.html" class="">Chambres</a><a href="restaurant.html" class="">Restaurant</a><a href="galerie.html" class="">Galerie</a><a href="contact.html" class="">Contact</a><a href="reservation.html" class="mob-cta">Réserver</a></div><nav id="navbar"><a href="index.html" class="nav-logo"><div class="nav-logo-icon">MB</div><div class="nav-logo-text"><strong>Manga Beach</strong><span>Hotel Madagascar</span></div></a><div class="nav-links"><a href="index.html" class="">Accueil</a><a href="chambres.html" class="">Chambres</a><a href="restaurant.html" class="">Restaurant</a><a href="galerie.html" class="">Galerie</a><a href="contact.html" class="">Contact</a></div><a href="reservation.html" class="nav-cta">Réserver</a><button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></nav><section class="page-hero" style="--hero-img:url('assets/chambre-double.jpg')"><div class="hero-inner"><div class="eyebrow">Réservation en ligne</div><h1 class="page-title">Réserver votre <em>séjour</em></h1><p class="hero-sub">Envoyez votre demande de réservation. L'équipe vous confirme la disponibilité sous 24h.</p></div></section><section class="section"><div class="booking-wrap"><div class="booking-box"><div class="section-label">Formulaire</div><h2 class="section-title">Demande de <em>réservation</em></h2><form id="bookingForm" action="mailto:mangabeach.hotel@yahoo.com" method="post" enctype="text/plain"><div class="form-grid"><div><label>Nom complet</label><input name="Nom" id="name" required></div><div><label>Email</label><input type="email" name="Email" id="email" required></div><div><label>Téléphone</label><input name="Téléphone" id="phone"></div><div><label>Chambre</label><select name="Chambre" id="room"><option value="Chambre Familiale">Chambre Familiale</option><option value="Chambre Double">Chambre Double</option><option value="À conseiller">À conseiller</option></select></div><div><label>Arrivée</label><input type="date" name="Arrivée" id="arrival" required></div><div><label>Départ</label><input type="date" name="Départ" id="departure" required></div><div><label>Adultes</label><input type="number" name="Adultes" id="adults" min="1" value="2"></div><div><label>Enfants</label><input type="number" name="Enfants" id="children" min="0" value="0"></div><div class="full"><label>Message</label><textarea name="Message" id="message" placeholder="Heure d'arrivée, transfert, excursion, demande spéciale..."></textarea></div><div class="full"><button class="btn-primary" type="submit" style="border:0;cursor:pointer">Envoyer la demande</button></div></div><div class="success" id="successBox">Votre logiciel email va s'ouvrir pour envoyer la demande. Si rien ne s'ouvre, contactez directement : mangabeach.hotel@yahoo.com</div><div class="error" id="errorBox">La date de départ doit être après la date d'arrivée.</div></form></div><aside class="summary-box"><div class="section-label">Résumé</div><h2 class="section-title">Votre <em>séjour</em></h2><div class="summary-line"><span>Chambre</span><strong id="sumRoom">Chambre Familiale</strong></div><div class="summary-line"><span>Arrivée</span><strong id="sumArrival">—</strong></div><div class="summary-line"><span>Départ</span><strong id="sumDeparture">—</strong></div><div class="summary-line"><span>Nuits</span><strong id="sumNights">—</strong></div><div class="summary-line"><span>Voyageurs</span><strong id="sumGuests">2 adultes</strong></div><div class="summary-note">Aucun paiement en ligne n'est demandé ici. Ceci est une demande de disponibilité, confirmée ensuite par l'hôtel.</div></aside></div></section>
+<div class="mobile-menu" id="mobile-menu"><a href="index.html" class="">Accueil</a><a href="chambres.html" class="">Chambres</a><a href="restaurant.html" class="">Restaurant</a><a href="galerie.html" class="">Galerie</a><a href="contact.html" class="">Contact</a><a href="reservation.html" class="mob-cta">Réserver</a></div><nav id="navbar"><a href="index.html" class="nav-logo"><div class="nav-logo-icon">MB</div><div class="nav-logo-text"><strong>Manga Beach</strong><span>Hotel Madagascar</span></div></a><div class="nav-links"><a href="index.html" class="">Accueil</a><a href="chambres.html" class="">Chambres</a><a href="restaurant.html" class="">Restaurant</a><a href="galerie.html" class="">Galerie</a><a href="contact.html" class="">Contact</a></div><a href="reservation.html" class="nav-cta">Réserver</a><button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></nav><section class="page-hero" style="--hero-img:url('assets/chambre-double.jpg')"><div class="hero-inner"><div class="eyebrow">Réservation en ligne</div><h1 class="page-title">Réserver votre <em>séjour</em></h1><p class="hero-sub">Réservez Manga Beach Hotel ou composez un séjour combiné avec Masoala Experiences. Réponse sous 24h.</p></div></section><section class="section"><div class="booking-wrap"><div class="booking-box"><div class="section-label">Formulaire</div><h2 class="section-title">Demande de <em>réservation</em></h2><div class="request-highlight"><strong>Page centrale de réservation.</strong><br>Vous pouvez demander un séjour à Manga Beach, un séjour combiné Masoala Experiences, un transfert bateau, une excursion ou une sortie pêche.</div><form id="bookingForm" action="https://formspree.io/f/maqvnqbj" method="POST">
+<input type="hidden" name="_subject" value="Nouvelle demande - Manga Beach Hotel / Masoala Experiences">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="Résumé - Tarif" id="hiddenTariff" value="">
+<input type="hidden" name="Résumé - Voyageurs" id="hiddenGuests" value="">
+<input type="hidden" name="Résumé - Nuits" id="hiddenNights" value="">
+<div class="form-grid"><div><label>Nom complet</label><input name="Nom" id="name" required></div><div><label>Email</label><input type="email" name="Email" id="email" required></div><div><label>Téléphone</label><input name="Téléphone" id="phone"></div><div><label>Type de demande</label><select name="Type de demande" id="requestType"><option value="Séjour Manga Beach Hotel">Séjour Manga Beach Hotel</option><option value="Séjour combiné Masoala Experiences">Séjour combiné Masoala Experiences</option><option value="Transfert ou excursion bateau">Transfert ou excursion bateau</option><option value="Pêche sportive Masoala">Pêche sportive Masoala</option><option value="À conseiller selon mon séjour">À conseiller selon mon séjour</option></select></div><div><label>Chambre</label><select name="Chambre" id="room"><option value="Chambre Familiale">Chambre Familiale</option><option value="Chambre Double">Chambre Double</option><option value="À conseiller">À conseiller</option></select></div><div><label>Arrivée</label><input type="date" name="Arrivée" id="arrival" required></div><div><label>Départ</label><input type="date" name="Départ" id="departure" required></div><div><label>Adultes</label><input type="number" name="Adultes" id="adults" min="1" value="2"></div><div><label>Enfants</label><input type="number" name="Enfants" id="children" min="0" value="0"></div><div class="full"><label>Message</label><textarea name="Message" id="message" placeholder="Exemple : séjour combiné, transferts bateau, sortie baleine, pêche sportive, nombre de personnes, heure d’arrivée…"></textarea></div><div class="full"><button class="btn-primary" id="submitBtn" type="submit" style="border:0;cursor:pointer"><span id="submitBtnText">Envoyer la demande</span></button></div></div><div class="success" id="successBox">Votre demande a bien été envoyée. Nous vous répondrons rapidement avec les disponibilités et les détails du séjour.</div><div class="error" id="errorBox">La date de départ doit être après la date d'arrivée.</div></form></div><aside class="summary-box"><div class="section-label">Résumé</div><h2 class="section-title">Votre <em>séjour</em></h2><div class="summary-line"><span>Demande</span><strong id="sumRequest" class="summary-badge">Séjour Manga Beach Hotel</strong></div><div class="summary-line"><span>Chambre</span><strong id="sumRoom">Chambre Familiale</strong></div><div class="summary-line"><span>Arrivée</span><strong id="sumArrival">—</strong></div><div class="summary-line"><span>Départ</span><strong id="sumDeparture">—</strong></div><div class="summary-line"><span>Nuits</span><strong id="sumNights">—</strong></div><div class="summary-line"><span>Voyageurs</span><strong id="sumGuests">2 adultes</strong></div><div class="summary-line"><span>Tarification</span><strong id="sumTariff" class="summary-tariff-status hotel">Disponibilité + tarif confirmés sous 24h</strong></div><div class="summary-note">Aucun paiement en ligne n’est demandé ici. Cette page sert aussi aux demandes venant de Masoala Experiences : séjour combiné, transferts, excursions ou pêche sportive.</div><div class="request-context" id="requestContext"><strong>Séjour Manga Beach Hotel</strong><br>Nous vérifions la disponibilité de votre chambre et vous envoyons le tarif final.</div></aside></div></section>
 
 <!-- TARIFS BATEAU & EXCURSIONS -->
 <section class="section boat-tariffs-section dark">
   <div style="max-width:1200px;margin:0 auto">
     <div class="section-label">Transferts & excursions</div>
     <h2 class="section-title">Plans tarifaires <em>bateau</em></h2>
-    <p class="section-sub">Ces tarifs permettent d’organiser votre séjour autour de Manga Beach Hotel : transferts, Nosy Mangabe, Ambodiforaha, Paradise Valley, observation des baleines et pêche sportive.</p>
+    <p class="section-sub">Ces options peuvent être ajoutées à votre demande de séjour. Les tarifs sont affichés à titre indicatif et confirmés selon météo, disponibilité bateau et nombre de personnes.</p>
 
     <div class="boat-tariffs-grid">
-      <div class="boat-tariff-card featured"><div class="boat-tariff-kicker">Excursion</div><div class="boat-tariff-title">Manga Beach → Nosy Mangabe</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 personne</span><strong>200 000 Ar</strong></div><div class="boat-tariff-row"><span>2 personnes</span><strong>150 000 Ar / pax</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>120 000 Ar / pax</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>100 000 Ar / pax</strong></div></div></div>
-      <div class="boat-tariff-card featured"><div class="boat-tariff-kicker">Parc Masoala</div><div class="boat-tariff-title">Manga Beach → Ambodiforaha</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>1 300 000 Ar</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>500 000 Ar / pax</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>400 000 Ar / pax</strong></div></div></div>
-      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Ambanizana</div><div class="boat-tariff-title">Manga Beach → Lodge Ambanizana</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>1 000 000 Ar</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>450 000 Ar / pax</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>380 000 Ar / pax</strong></div></div></div>
-      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Depuis Paradise Valley</div><div class="boat-tariff-title">Lodge Paradise Valley → Ambodiforaha</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>400 000 Ar</strong></div><div class="boat-tariff-row"><span>3 à 4 personnes</span><strong>180 000 Ar / pax</strong></div><div class="boat-tariff-row"><span>5 personnes et plus</span><strong>150 000 Ar / pax</strong></div></div></div>
-      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Observation</div><div class="boat-tariff-title">Sortie baleine · 1h30</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 pax</span><strong>400 000 Ar</strong></div><div class="boat-tariff-row"><span>2 pax</span><strong>300 000 Ar / personne</strong></div><div class="boat-tariff-row"><span>3 pax</span><strong>250 000 Ar / personne</strong></div><div class="boat-tariff-row"><span>4 à 12 pax</span><strong>200 000 Ar / personne</strong></div></div></div>
+      <div class="boat-tariff-card featured"><div class="boat-tariff-kicker">Excursion</div><div class="boat-tariff-title">Manga Beach → Nosy Mangabe</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 personne</span><strong>200 000 Ar</strong></div><div class="boat-tariff-row"><span>2 personnes</span><strong>150 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>120 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>100 000 Ar par personne</strong></div></div></div>
+      <div class="boat-tariff-card featured"><div class="boat-tariff-kicker">Parc Masoala</div><div class="boat-tariff-title">Manga Beach → Ambodiforaha</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>1 300 000 Ar</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>500 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>400 000 Ar par personne</strong></div></div></div>
+      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Ambanizana</div><div class="boat-tariff-title">Manga Beach → Lodge Ambanizana</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>1 000 000 Ar</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>450 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>4 personnes et plus</span><strong>380 000 Ar par personne</strong></div></div></div>
+      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Depuis Paradise Valley</div><div class="boat-tariff-title">Lodge Paradise Valley → Ambodiforaha</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 ou 2 personnes</span><strong>400 000 Ar</strong></div><div class="boat-tariff-row"><span>3 à 4 personnes</span><strong>180 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>5 personnes et plus</span><strong>150 000 Ar par personne</strong></div></div></div>
+      <div class="boat-tariff-card"><div class="boat-tariff-kicker">Observation</div><div class="boat-tariff-title">Sortie baleine · 1h30</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>1 personne</span><strong>400 000 Ar</strong></div><div class="boat-tariff-row"><span>2 personnes</span><strong>300 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>3 personnes</span><strong>250 000 Ar par personne</strong></div><div class="boat-tariff-row"><span>4 à 12 personnes</span><strong>200 000 Ar par personne</strong></div></div></div>
       <div class="boat-tariff-card"><div class="boat-tariff-kicker">Pêche</div><div class="boat-tariff-title">Pêche initiation ou sportive · 4h</div><div class="boat-tariff-table"><div class="boat-tariff-row"><span>Sortie privée</span><strong>1 000 000 Ar</strong></div></div></div>
     </div>
 
@@ -80,4 +103,167 @@ nav{top:var(--mx-sitebar-height)!important;}
   </div>
 </section>
 
-<section class="cta-section"><div><div class="eyebrow">Besoin d'aide ?</div><h2 class="cta-title">Contact direct<br>avec l'hôtel</h2><p class="cta-sub">Appelez-nous si votre demande est urgente.</p></div><div class="cta-actions"><a href="tel:+261325478904" class="btn-primary">Appeler</a><a href="contact.html" class="btn-outline">Contact</a></div></section><script>const f=document.getElementById('bookingForm'),room=document.getElementById('room'),arrival=document.getElementById('arrival'),departure=document.getElementById('departure'),adults=document.getElementById('adults'),children=document.getElementById('children'),successBox=document.getElementById('successBox'),errorBox=document.getElementById('errorBox');function nights(){if(!arrival.value||!departure.value)return null;const a=new Date(arrival.value),d=new Date(departure.value);return Math.round((d-a)/86400000)}function update(){document.getElementById('sumRoom').textContent=room.value;document.getElementById('sumArrival').textContent=arrival.value||'—';document.getElementById('sumDeparture').textContent=departure.value||'—';const n=nights();document.getElementById('sumNights').textContent=n&&n>0?n+' nuit'+(n>1?'s':''):'—';let g=adults.value+' adulte'+(adults.value>1?'s':'');if(+children.value>0)g+=' · '+children.value+' enfant'+(children.value>1?'s':'');document.getElementById('sumGuests').textContent=g}document.querySelectorAll('#bookingForm input,#bookingForm select,#bookingForm textarea').forEach(e=>e.addEventListener('input',()=>{errorBox.style.display='none';update()}));arrival.addEventListener('change',()=>{if(arrival.value){departure.min=arrival.value;if(departure.value&&nights()<=0)departure.value=''}update()});f.addEventListener('submit',e=>{if(nights()!==null&&nights()<=0){e.preventDefault();errorBox.style.display='block';successBox.style.display='none';return}successBox.style.display='block';errorBox.style.display='none'});update();</script><footer><div class="ft-top"><div><div class="ft-brand-name">Manga Beach <span>Hotel</span></div><div class="ft-brand-loc">Maroantsetra · Madagascar</div><p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p></div><div><div class="ft-col-title">Navigation</div><div class="ft-links-list"><a href="index.html">Accueil</a><a href="chambres.html">Chambres</a><a href="restaurant.html">Restaurant</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div></div><div><div class="ft-col-title">Services</div><div class="ft-links-list"><a href="contact.html">Pêche sportive</a><a href="contact.html">Observation baleines</a><a href="contact.html">Parc Masoala</a><a href="contact.html">Transferts</a><a href="restaurant.html">Restaurant</a></div></div><div><div class="ft-col-title">Contact</div><div class="ft-contact-item"><span>📍</span><span>R1 011 Androkaroka<br>BP 73 Maroantsetra</span></div><div class="ft-contact-item"><span>✉</span><span>mangabeach.hotel@yahoo.com</span></div><div class="ft-contact-item"><span>☎</span><span>+261 32 54 789 04<br>+261 34 07 019 77</span></div></div></div><div class="ft-bottom"><div class="ft-copy">© 2025 Manga Beach Hotel Madagascar. Tous droits réservés.</div><div class="ft-bottom-links"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div></footer><script>const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');hamburger.setAttribute('aria-expanded',mobileMenu.classList.contains('open'));document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.12});document.querySelectorAll('.feature-card,.gallery-card,.info-card,.dish-card,.contact-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .65s,transform .65s';obs.observe(el)});</script></body></html>
+<section class="cta-section"><div><div class="eyebrow">Besoin d'aide ?</div><h2 class="cta-title">Besoin d’organiser<br>un séjour complet ?</h2><p class="cta-sub">Manga Beach peut vous orienter pour l’hôtel, les transferts, Paradise Valley et les sorties en mer.</p></div><div class="cta-actions"><a href="tel:+261325478904" class="btn-primary">Appeler</a><a href="contact.html" class="btn-outline">Contact</a></div></section><script>
+const f=document.getElementById('bookingForm'),
+      requestType=document.getElementById('requestType'),
+      room=document.getElementById('room'),
+      arrival=document.getElementById('arrival'),
+      departure=document.getElementById('departure'),
+      adults=document.getElementById('adults'),
+      children=document.getElementById('children'),
+      message=document.getElementById('message'),
+      successBox=document.getElementById('successBox'),
+      errorBox=document.getElementById('errorBox'),
+      submitBtn=document.getElementById('submitBtn'),
+      submitBtnText=document.getElementById('submitBtnText'),
+      sumTariff=document.getElementById('sumTariff'),
+      requestContext=document.getElementById('requestContext');
+
+const REQUEST_CONFIG={
+  'Séjour Manga Beach Hotel':{
+    tariff:'Disponibilité + tarif confirmés sous 24h',
+    css:'hotel',
+    button:'Demander disponibilité',
+    context:'Nous vérifions la disponibilité de votre chambre et vous envoyons le tarif final.',
+    placeholder:'Je souhaite vérifier les disponibilités pour un séjour à Manga Beach Hotel. Merci de me confirmer le tarif final.'
+  },
+  'Séjour combiné Masoala Experiences':{
+    tariff:'Proposition personnalisée après demande',
+    css:'custom',
+    button:'Demander une proposition',
+    context:'Séjour sur mesure : Manga Beach, Paradise Valley, transferts, excursions ou pêche sportive selon vos dates.',
+    placeholder:'Je souhaite organiser un séjour combiné avec Manga Beach, Paradise Valley et/ou Pêche sportive Masoala. Merci de me proposer un itinéraire et un tarif personnalisé.'
+  },
+  'Transfert ou excursion bateau':{
+    tariff:'Tarif selon trajet et nombre de personnes',
+    css:'custom',
+    button:'Demander tarif bateau',
+    context:'Les tarifs bateau sont confirmés selon l’itinéraire, le nombre de personnes, la météo et la disponibilité.',
+    placeholder:'Je souhaite des informations sur les transferts et excursions bateau. Merci de me confirmer les options et tarifs selon le nombre de personnes.'
+  },
+  'Pêche sportive Masoala':{
+    tariff:'Sortie ou séjour pêche sur mesure',
+    css:'custom',
+    button:'Demander sortie pêche',
+    context:'La pêche sportive dépend du format choisi : sortie 4h, journée, séjour ou expédition plusieurs jours.',
+    placeholder:'Je souhaite organiser une sortie ou un séjour pêche sportive à Masoala. Merci de me confirmer les disponibilités et conditions.'
+  },
+  'À conseiller selon mon séjour':{
+    tariff:'Conseil personnalisé après demande',
+    css:'custom',
+    button:'Être conseillé',
+    context:'Indiquez vos dates et vos envies : nous vous orientons vers la meilleure combinaison.',
+    placeholder:'Je souhaite être conseillé pour organiser mon séjour à Masoala selon mes dates, mon budget et mes envies.'
+  }
+};
+
+function nights(){
+  if(!arrival.value||!departure.value)return null;
+  const a=new Date(arrival.value), d=new Date(departure.value);
+  return Math.round((d-a)/86400000);
+}
+function travellersText(){
+  let g=adults.value+' adulte'+(Number(adults.value)>1?'s':'');
+  if(Number(children.value)>0) g+=' · '+children.value+' enfant'+(Number(children.value)>1?'s':'');
+  return g;
+}
+function currentConfig(){
+  return REQUEST_CONFIG[requestType.value] || REQUEST_CONFIG['Séjour Manga Beach Hotel'];
+}
+function update(){
+  const cfg=currentConfig();
+  document.getElementById('sumRequest').textContent=requestType.value;
+  document.getElementById('sumRoom').textContent=room.value;
+  document.getElementById('sumArrival').textContent=arrival.value||'—';
+  document.getElementById('sumDeparture').textContent=departure.value||'—';
+  const n=nights();
+  document.getElementById('sumNights').textContent=n&&n>0?n+' nuit'+(n>1?'s':''):'—';
+  document.getElementById('sumGuests').textContent=travellersText();
+  if(sumTariff){
+    sumTariff.textContent=cfg.tariff;
+    sumTariff.className='summary-tariff-status '+cfg.css;
+  }
+  if(requestContext){
+    requestContext.innerHTML='<strong>'+requestType.value+'</strong><br>'+cfg.context;
+  }
+  if(submitBtnText){ submitBtnText.textContent=cfg.button; }
+  const hiddenTariff=document.getElementById('hiddenTariff');
+  const hiddenGuests=document.getElementById('hiddenGuests');
+  const hiddenNights=document.getElementById('hiddenNights');
+  if(hiddenTariff) hiddenTariff.value=cfg.tariff;
+  if(hiddenGuests) hiddenGuests.value=travellersText();
+  if(hiddenNights){
+    const n=nights();
+    hiddenNights.value=n&&n>0?n+' nuit'+(n>1?'s':''):'Non précisé';
+  }
+}
+function syncMessageSuggestion(){
+  const current=(message.value||'').trim();
+  if(current.length>0) return;
+  message.placeholder=currentConfig().placeholder+' Ajoutez vos dates, nombre de personnes et demandes particulières…';
+}
+function validateDates(){
+  if(nights()!==null && nights()<=0){
+    errorBox.style.display='block';
+    successBox.style.display='none';
+    return false;
+  }
+  errorBox.style.display='none';
+  return true;
+}
+
+// Pré-remplissage possible depuis Masoala Experiences : ?type=masoala / ?type=peche / ?type=bateau / ?type=hotel
+(function applyParams(){
+  const params=new URLSearchParams(window.location.search);
+  const type=params.get('type');
+  if(type&&requestType){
+    const map={masoala:'Séjour combiné Masoala Experiences',peche:'Pêche sportive Masoala',bateau:'Transfert ou excursion bateau',hotel:'Séjour Manga Beach Hotel'};
+    const target=map[type]||type;
+    [...requestType.options].forEach(o=>{if(o.value===target)requestType.value=target});
+  }
+})();
+
+document.querySelectorAll('#bookingForm input,#bookingForm select,#bookingForm textarea').forEach(e=>{
+  e.addEventListener('input',()=>{errorBox.style.display='none';update();});
+});
+requestType.addEventListener('change',()=>{syncMessageSuggestion();update();});
+arrival.addEventListener('change',()=>{
+  if(arrival.value){departure.min=arrival.value;if(departure.value&&nights()<=0)departure.value='';}
+  validateDates();update();
+});
+departure.addEventListener('change',()=>{validateDates();update();});
+f.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!validateDates()) return;
+  errorBox.style.display='none';
+  successBox.style.display='none';
+  if(submitBtn){submitBtn.disabled=true;submitBtn.style.opacity='.65';}
+  if(submitBtnText){submitBtnText.textContent='Envoi en cours…';}
+
+  try{
+    const formData=new FormData(f);
+    const response=await fetch(f.action,{
+      method:'POST',
+      body:formData,
+      headers:{'Accept':'application/json'}
+    });
+    if(response.ok){
+      successBox.textContent='Votre demande a bien été envoyée. Nous vous répondrons rapidement avec les disponibilités et les détails du séjour.';
+      successBox.style.display='block';
+      f.reset();
+      if(requestType) requestType.value='Séjour Manga Beach Hotel';
+      syncMessageSuggestion();
+      update();
+    }else{
+      throw new Error('Erreur Formspree');
+    }
+  }catch(err){
+    errorBox.textContent='Le formulaire n’a pas pu être envoyé. Vérifiez votre connexion ou contactez directement mangabeach.hotel@yahoo.com.';
+    errorBox.style.display='block';
+  }finally{
+    if(submitBtn){submitBtn.disabled=false;submitBtn.style.opacity='1';}
+    if(submitBtnText){submitBtnText.textContent=currentConfig().button;}
+  }
+});
+syncMessageSuggestion();update();
+</script><footer><div class="ft-top"><div><div class="ft-brand-name">Manga Beach <span>Hotel</span></div><div class="ft-brand-loc">Maroantsetra · Madagascar</div><p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p></div><div><div class="ft-col-title">Navigation</div><div class="ft-links-list"><a href="index.html">Accueil</a><a href="chambres.html">Chambres</a><a href="restaurant.html">Restaurant</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div></div><div><div class="ft-col-title">Services</div><div class="ft-links-list"><a href="contact.html">Pêche sportive</a><a href="contact.html">Observation baleines</a><a href="contact.html">Parc Masoala</a><a href="contact.html">Transferts</a><a href="restaurant.html">Restaurant</a></div></div><div><div class="ft-col-title">Contact</div><div class="ft-contact-item"><span>📍</span><span>R1 011 Androkaroka<br>BP 73 Maroantsetra</span></div><div class="ft-contact-item"><span>✉</span><span>mangabeach.hotel@yahoo.com</span></div><div class="ft-contact-item"><span>☎</span><span>+261 32 54 789 04<br>+261 34 07 019 77</span></div></div></div><div class="ft-bottom"><div class="ft-copy">© 2025 Manga Beach Hotel Madagascar. Tous droits réservés.</div><div class="ft-bottom-links"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div></footer><script>const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');hamburger.setAttribute('aria-expanded',mobileMenu.classList.contains('open'));document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.12});document.querySelectorAll('.feature-card,.gallery-card,.info-card,.dish-card,.contact-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .65s,transform .65s';obs.observe(el)});</script></body></html>
