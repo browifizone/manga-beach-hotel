@@ -350,7 +350,7 @@ nav{top:var(--mx-sitebar-height)!important;}
   <a href="restaurant.html">Restaurant</a>
   <a href="galerie.html">Galerie</a>
   <a href="contact.html">Contact</a>
-  <a href="reservation.html" class="mob-cta">Réserver</a>
+  <a href="reservation.html?type=hotel" class="mob-cta">Réserver</a>
 </div>
 
 <!-- NAV -->
@@ -369,7 +369,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     <a href="galerie.html">Galerie</a>
     <a href="contact.html">Contact</a>
   </div>
-  <a href="reservation.html" class="nav-cta">Réserver</a>
+  <a href="reservation.html?type=hotel" class="nav-cta">Réserver</a>
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -388,7 +388,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     <p class="page-sub">Des chambres élégantes, calmes et confortables pour profiter pleinement de la baie d'Antongil et de l'esprit unique de Manga Beach Hotel.</p>
     <div class="hero-actions">
       <a href="#chambres" class="btn-primary">Voir les chambres</a>
-      <a href="reservation.html" class="btn-outline">Demander disponibilité</a>
+      <a href="reservation.html?type=hotel" class="btn-outline">Demander disponibilité</a>
     </div>
   </div>
 </header>
@@ -425,11 +425,11 @@ nav{top:var(--mx-sitebar-height)!important;}
       <h2 class="section-title">Nos chambres <em>signature</em></h2>
       <p class="section-sub">Choisissez la catégorie adaptée à votre séjour : familiale ou double / single, avec tarifs affichés, sanitaires, Wi‑Fi et tout le confort.</p>
     </div>
-    <a href="reservation.html" class="btn-outline-dark">Réserver</a>
+    <a href="reservation.html?type=hotel" class="btn-outline-dark">Réserver</a>
   </div>
 
   <!-- Chambre Familiale -->
-  <article class="room-detail-card reveal">
+  <article class="room-detail-card reveal" id="familiale">
     <div class="room-visual">
       <img src="assets/chambre-familiale.jpg" alt="Chambre Familiale Manga Beach Hotel" onerror="this.style.cssText='background:linear-gradient(135deg,#0a1628,#1a3a5c);height:100%;display:block'"/>
       <div class="room-photo-badge">Chambres 208 · 209 · 210</div>
@@ -447,7 +447,7 @@ nav{top:var(--mx-sitebar-height)!important;}
         <div class="spec"><div class="spec-icon">👨‍👩‍👧‍👦</div><div><strong>Idéal en famille</strong><span>Espace adapté à plusieurs voyageurs</span></div></div>
       </div>
       <div class="room-actions">
-        <a href="reservation.html?room=familiale" class="btn-primary">Réserver cette chambre</a>
+        <a href="reservation.html?type=hotel&room=208" class="btn-primary">Réserver cette chambre</a>
         <a href="contact.html" class="btn-outline-dark">Demander conseil</a>
       </div>
       <p class="room-note">Tarif : 201.500 ariary par nuit.</p>
@@ -455,7 +455,7 @@ nav{top:var(--mx-sitebar-height)!important;}
   </article>
 
   <!-- Chambre Double -->
-  <article class="room-detail-card reverse reveal">
+  <article class="room-detail-card reverse reveal" id="double-single">
     <div class="room-visual">
       <img src="assets/chambre-double.jpg" alt="Chambre Double / Single Manga Beach Hotel" onerror="this.style.cssText='background:linear-gradient(135deg,#112240,#1a4060);height:100%;display:block'"/>
       <div class="room-photo-badge">201 à 207 + chambres à nom</div>
@@ -473,7 +473,7 @@ nav{top:var(--mx-sitebar-height)!important;}
         <div class="spec"><div class="spec-icon">✨</div><div><strong>Tout le confort</strong><span>Ambiance reposante et pratique</span></div></div>
       </div>
       <div class="room-actions">
-        <a href="reservation.html?room=double-single" class="btn-primary">Réserver cette chambre</a>
+        <a href="reservation.html?type=hotel&room=201" class="btn-primary">Réserver cette chambre</a>
         <a href="galerie.html" class="btn-outline-dark">Voir la galerie</a>
       </div>
       <p class="room-note">Tarif : 151.500 ariary par nuit.</p>
@@ -585,7 +585,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     <p class="cta-sub">Envoyez une demande, nous confirmons la disponibilité et les conditions du séjour.</p>
   </div>
   <div class="cta-actions">
-    <a href="reservation.html" class="btn-primary">Réserver maintenant</a>
+    <a href="reservation.html?type=hotel" class="btn-primary">Réserver maintenant</a>
     <a href="contact.html" class="btn-outline">Nous contacter</a>
   </div>
 </section>
