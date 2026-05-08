@@ -131,6 +131,20 @@ transition:.2s
 }
 .guest-note strong{color:var(--navy)}
 
+
+/* Sur devis reservation modes */
+.quote-mode-note{
+  margin-top:.85rem;
+  padding:.9rem 1rem;
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border:1px solid var(--border);
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--navy-light);
+}
+.quote-mode-note strong{color:var(--navy)}
+.summary-line strong.quote-value{color:#7d5a13}
+
 </style><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." name="description"/><meta content="réservation hôtel Maroantsetra, Manga Beach réservation, séjour Masoala, transfert bateau" name="keywords"/><meta content="index, follow" name="robots"/><meta content="Réservation | Manga Beach Hôtel Maroantsetra" property="og:title"/><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." property="og:description"/><meta content="website" property="og:type"/></head><body>
 
 <div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
@@ -299,7 +313,7 @@ Les enfants sont séparés en deux catégories afin de faciliter la confirmation
 <strong class="summary-tariff-status hotel" id="sumTariff">Disponibilité + tarif confirmés sous 24h</strong>
 </div>
 <div class="summary-note">
-        Aucun paiement en ligne n’est demandé ici. Le total affiché est une estimation quand une chambre et des dates sont renseignées.
+        Aucun paiement en ligne n’est demandé ici. Le total affiché concerne uniquement les séjours hôtel simples ; les séjours combinés, transferts et pêche sportive sont confirmés sur devis.
       </div>
 <div class="request-context" id="requestContext">
 <strong>Séjour Manga Beach Hôtel Maroantsetra</strong><br/>
@@ -356,36 +370,40 @@ const REQUEST_CONFIG = {
     showRoom: true
   },
   'Séjour combiné Masoala Experiences': {
-    tariff: 'Proposition personnalisée après demande',
+    tariff: 'Sur devis · proposition personnalisée sous 24h',
     css: 'custom',
-    button: 'Demander une proposition',
-    context: 'Séjour sur mesure : Manga Beach, Paradise Valley, transferts, excursions ou pêche sportive selon vos dates.',
-    placeholder: 'Je souhaite organiser un séjour combiné avec hébergement, transferts et activités. Merci de me proposer une formule adaptée.',
-    showRoom: true
+    button: 'Demander une proposition sur mesure',
+    context: 'Le séjour combiné Masoala Experiences est préparé sur mesure selon vos dates, le nombre de voyageurs, les hébergements souhaités, les transferts bateau et les activités choisies.',
+    placeholder: 'Je souhaite organiser un séjour combiné Masoala Experiences. Merci de me proposer une formule adaptée avec hébergement, transferts et activités selon mes dates.',
+    showRoom: true,
+    quoteMode: true
   },
   'Transfert ou excursion bateau': {
-    tariff: 'Tarif selon trajet et nombre de personnes',
+    tariff: 'Sur devis · tarif selon trajet et nombre de personnes',
     css: 'custom',
-    button: 'Demander tarif bateau',
+    button: 'Demander un devis bateau',
     context: 'Les tarifs bateau sont confirmés selon l’itinéraire, la météo, le nombre de personnes et la disponibilité.',
     placeholder: 'Je souhaite organiser un transfert ou une excursion bateau. Merci de me confirmer les options et tarifs.',
-    showRoom: false
+    showRoom: false,
+    quoteMode: true
   },
   'Pêche sportive Masoala': {
-    tariff: 'Sortie ou séjour pêche sur mesure',
+    tariff: 'Sur devis · sortie ou séjour pêche personnalisé',
     css: 'custom',
-    button: 'Demander sortie pêche',
-    context: 'Nous adaptons la proposition selon le type de sortie : 4h, journée, séjour ou expédition plusieurs jours.',
-    placeholder: 'Je souhaite organiser une sortie ou un séjour de pêche sportive à Masoala. Merci de me confirmer les disponibilités.',
-    showRoom: false
+    button: 'Demander un devis pêche',
+    context: 'La pêche sportive se fait uniquement sur demande de devis : dates, nombre de personnes, durée de sortie, météo, bateau et niveau souhaité.',
+    placeholder: 'Je souhaite organiser une sortie ou un séjour de pêche sportive à Masoala. Merci de me confirmer les disponibilités et de m’envoyer un devis.',
+    showRoom: false,
+    quoteMode: true
   },
   'À conseiller selon mon séjour': {
-    tariff: 'Conseil personnalisé après demande',
+    tariff: 'Sur devis · conseil personnalisé après demande',
     css: 'custom',
     button: 'Être conseillé',
     context: 'Indiquez vos dates, votre budget et vos envies. Nous vous orientons vers la meilleure combinaison.',
     placeholder: 'Je souhaite être conseillé pour choisir la meilleure formule selon mes dates, mon budget et mes envies.',
-    showRoom: true
+    showRoom: true,
+    quoteMode: true
   }
 };
 
@@ -467,6 +485,7 @@ function estimatedTotal(){
   const cfg = currentConfig();
   const roomData = getRoomData();
   const n = nights();
+  if(cfg.quoteMode) return null;
   if(!cfg.showRoom || !roomData.price || !n || n <= 0) return null;
   return roomData.price * n;
 }
@@ -517,22 +536,36 @@ function updateSummary(){
   document.getElementById('sumNights').textContent = n && n > 0 ? n + ' nuit' + (n > 1 ? 's' : '') : '—';
   document.getElementById('sumGuests').textContent = travellersText();
 
-  if(cfg.showRoom){
+  if(cfg.quoteMode){
+    document.getElementById('sumRoom').textContent = cfg.showRoom ? (roomData.label !== '—' ? roomData.label : 'À définir') : 'Non concerné';
+    document.getElementById('sumCategory').textContent = cfg.showRoom ? (roomData.category || 'À confirmer') : 'Service / activité';
+    document.getElementById('sumRate').textContent = 'Sur devis';
+    document.getElementById('sumRate').className = 'rate-value quote-value';
+    document.getElementById('sumTotal').textContent = 'Proposition personnalisée';
+    document.getElementById('sumTotal').className = 'total-value quote-value';
+  } else if(cfg.showRoom){
     document.getElementById('sumRoom').textContent = roomData.label;
     document.getElementById('sumCategory').textContent = roomData.category ? roomData.category : 'À confirmer';
     document.getElementById('sumRate').textContent = roomData.price ? formatAriary(roomData.price) : 'À confirmer';
+    document.getElementById('sumRate').className = 'rate-value';
     document.getElementById('sumTotal').textContent = total ? formatAriaryTotal(total) : '—';
+    document.getElementById('sumTotal').className = 'total-value';
   } else {
     document.getElementById('sumRoom').textContent = 'Non concerné';
     document.getElementById('sumCategory').textContent = 'Service / activité';
     document.getElementById('sumRate').textContent = 'Selon demande';
+    document.getElementById('sumRate').className = 'rate-value';
     document.getElementById('sumTotal').textContent = 'Sur devis';
+    document.getElementById('sumTotal').className = 'total-value quote-value';
   }
 
   sumTariff.textContent = cfg.tariff;
   sumTariff.className = 'summary-tariff-status ' + cfg.css;
 
   let contextText = '<strong>' + requestType.value + '</strong><br>' + cfg.context;
+  if(cfg.quoteMode){
+    contextText += '<div class="quote-mode-note"><strong>Demande sur devis</strong><br>Aucun total automatique n’est affiché pour cette formule. L’équipe confirme une proposition personnalisée selon vos dates, vos voyageurs, les disponibilités, les transferts et les activités souhaitées.</div>';
+  }
   if(cfg.showRoom && roomData.price){
     contextText += '<br><br><strong>' + roomData.label + '</strong><br>' + roomData.comfort;
     if(roomData.category === 'Chambre Double'){
@@ -541,12 +574,12 @@ function updateSummary(){
   }
   requestContext.innerHTML = contextText;
 
-  document.getElementById('hiddenTariff').value = cfg.showRoom && roomData.price ? formatAriary(roomData.price) : cfg.tariff;
+  document.getElementById('hiddenTariff').value = cfg.quoteMode ? cfg.tariff : (cfg.showRoom && roomData.price ? formatAriary(roomData.price) : cfg.tariff);
   document.getElementById('hiddenGuests').value = travellersText();
   document.getElementById('hiddenChildrenSmall').value = (childrenSmall?.value || '0') + ' enfant(s) moins de 5 ans';
   document.getElementById('hiddenChildrenBig').value = (childrenBig?.value || '0') + ' enfant(s) 5 ans et plus';
   document.getElementById('hiddenNights').value = n && n > 0 ? n + ' nuit' + (n > 1 ? 's' : '') : 'Non précisé';
-  document.getElementById('hiddenTotal').value = total ? formatAriaryTotal(total) : 'À confirmer / sur devis';
+  document.getElementById('hiddenTotal').value = cfg.quoteMode ? 'Sur devis · proposition personnalisée' : (total ? formatAriaryTotal(total) : 'À confirmer / sur devis');
   document.getElementById('hiddenCategory').value = cfg.showRoom ? (roomData.category || 'À confirmer') : 'Service / activité';
 }
 
