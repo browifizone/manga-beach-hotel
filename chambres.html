@@ -305,49 +305,63 @@
       .ft-top { grid-template-columns: 1fr; }
     }
   
-/* === Masoala Experiences inter-sites bar — premium clean v2 === */
-:root{--mx-sitebar-height:34px;}
-html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
-body{padding-top:var(--mx-sitebar-height);}
-.mx-sitebar{
-  position:fixed;top:0;left:0;right:0;z-index:10000;
-  height:var(--mx-sitebar-height);
-  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
-  border-bottom:1px solid rgba(232,213,163,.18);
-  box-shadow:0 8px 26px rgba(0,0,0,.18);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  font-family:inherit;
 }
-.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
-.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
-.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
-.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
-.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
-nav{top:var(--mx-sitebar-height)!important;}
-.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
-@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
-@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
 
 
 .nav-logo-mark{width:58px;height:58px;object-fit:contain;display:block;flex-shrink:0;filter:drop-shadow(0 8px 18px rgba(0,0,0,.22));}
 .ft-brand-logo{width:140px;max-width:100%;height:auto;display:block;object-fit:contain;margin:0 0 1rem 0;filter:drop-shadow(0 10px 24px rgba(0,0,0,.18));}
 @media(max-width:900px){.nav-logo-mark{width:52px;height:52px}.ft-brand-logo{width:120px}}
 
+
+/* Ecosystem navigation final fixed */
+.ecosystem-nav{
+position:relative;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:.65rem;
+flex-wrap:wrap;
+padding:.62rem 1rem;
+background:#041018;
+color:#fff;
+font-family:Arial,sans-serif;
+font-size:.88rem;
+line-height:1.2;
+border-bottom:1px solid rgba(255,255,255,.12)
+}
+.ecosystem-nav a{
+display:inline-flex;
+align-items:center;
+gap:.35rem;
+padding:.45rem .75rem;
+border-radius:999px;
+color:rgba(255,255,255,.86);
+text-decoration:none;
+font-weight:800;
+border:1px solid transparent;
+transition:.2s
+}
+.ecosystem-nav a:hover{background:rgba(255,255,255,.10);color:#fff}
+.ecosystem-nav a.active{background:#f0c36d;color:#061923;border-color:#f0c36d}
+@media(max-width:720px){
+.ecosystem-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:.58rem .8rem}
+.ecosystem-nav a{white-space:nowrap;font-size:.82rem}
+}
+
 </style>
 <meta content="Découvrez les chambres familiales et doubles du Manga Beach Hôtel Maroantsetra : confort, Wi‑Fi, sanitaires et tarifs clairs pour votre séjour à Maroantsetra." name="description"/><meta content="chambres Maroantsetra, hôtel Maroantsetra, Manga Beach Hôtel, chambre familiale, chambre double" name="keywords"/><meta content="index, follow" name="robots"/><meta content="Chambres &amp; Suites | Manga Beach Hôtel Maroantsetra" property="og:title"/><meta content="Découvrez les chambres familiales et doubles du Manga Beach Hôtel Maroantsetra : confort, Wi‑Fi, sanitaires et tarifs clairs pour votre séjour à Maroantsetra." property="og:description"/><meta content="website" property="og:type"/></head>
 <body>
-<!-- MASOALA EXPERIENCES SITEBAR -->
-<div aria-label="Navigation Masoala Experiences" class="mx-sitebar">
-<div class="mx-sitebar-inner">
-<a class="mx-sitebar-brand" href="https://masoala-experiences.vercel.app/" rel="noopener" target="_blank">Masoala Experiences</a>
-<div class="mx-sitebar-links">
-<a href="https://manga-beach-hotel.vercel.app/" rel="noopener" target="_blank">🏨 Manga Beach</a>
-<a href="https://paradise-valley-lodge.vercel.app/" rel="noopener" target="_blank">🌿 Paradise Valley</a>
-<a href="https://peche-sportive-masoala.vercel.app/" rel="noopener" target="_blank">🎣 Pêche Masoala</a>
-<a href="https://masoala-experiences.vercel.app/" rel="noopener" target="_blank">◉ Hub</a>
+
+<div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
+<a href="https://masoala-experiences.vercel.app/">◉ Masoala Experiences</a>
+<a href="https://manga-beach-hotel.vercel.app/" class="active">🏨 Manga Beach</a>
+<a href="https://paradise-valley-lodge.vercel.app/">🌿 Paradise Valley</a>
+<a href="https://peche-sportive-masoala.vercel.app/">🎣 Pêche Sportive</a>
 </div>
-</div>
-</div>
+
+
+
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">
 <a href="index.html">Accueil</a>

@@ -3,28 +3,7 @@
 <html lang="fr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Réservation | Manga Beach Hôtel Maroantsetra</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/><style>
 :root{--navy:#0a1628;--navy-mid:#112240;--navy-light:#1a3a5c;--gold:#c9a84c;--gold-light:#e8d5a3;--gold-pale:#f5ecd7;--cream:#faf7f2;--cream-dark:#f0ead8;--white:#fff;--muted:#6b7a8d;--text:#1a2332;--border:rgba(201,168,76,.22);--shadow:0 28px 80px rgba(10,22,40,.14)}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}a{text-decoration:none;color:inherit}img{display:block;width:100%;height:100%;object-fit:cover}nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(10,22,40,.18);transition:.35s}nav.scrolled{background:rgba(10,22,40,.97);padding:.8rem 4rem;box-shadow:0 4px 24px rgba(0,0,0,.3)}.nav-logo{display:flex;align-items:center;gap:.8rem}.nav-logo-icon{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;color:var(--navy);font-weight:600}.nav-logo-text{font-family:'Cormorant Garamond',serif;display:flex;flex-direction:column;gap:.2rem;position:relative;padding-left:1rem}.nav-logo-text:before{content:'';position:absolute;left:0;top:.2rem;bottom:.2rem;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:.9}.nav-logo-text strong{display:block;color:#fff;font-size:1.18rem;letter-spacing:.12em;text-transform:uppercase;line-height:1}.nav-logo-text span{font-family:'Jost',sans-serif;font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-light);font-weight:400;line-height:1.2}.nav-links{display:flex;gap:2.5rem}.nav-links a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:500;position:relative}.nav-links a:after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:.3s}.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}.nav-links a:hover:after,.nav-links a.active:after{width:100%}.nav-cta,.btn-primary{background:var(--gold);color:var(--navy);padding:.8rem 1.8rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;display:inline-block;transition:.25s}.nav-cta:hover,.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}.btn-outline{border:1px solid rgba(255,255,255,.45);color:#fff;padding:.8rem 1.8rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;display:inline-block;transition:.25s}.btn-outline:hover{border-color:var(--gold);color:var(--gold-light)}.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}.hamburger span{width:24px;height:2px;background:#fff;display:block;transition:.3s}.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}.mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2.4rem}.mobile-menu.open{display:flex}.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;color:white}.mobile-menu a.active{color:var(--gold-light)}.mobile-menu .mob-cta{font-family:'Jost',sans-serif;background:var(--gold);color:var(--navy);padding:.8rem 2.4rem;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase}.page-hero{min-height:68vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(145deg,#0a1628,#1a3a5c 55%,#0a1628)}.page-hero:before{content:'';position:absolute;inset:0;background:var(--hero-img,linear-gradient(145deg,#0a1628,#1a3a5c)) center/cover no-repeat;opacity:.26;mix-blend-mode:luminosity}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,22,40,.25),rgba(10,22,40,.9))}.hero-inner{position:relative;z-index:2;padding:8rem 2rem 4rem}.eyebrow,.section-label{font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1rem}.page-title{font-family:'Cormorant Garamond',serif;color:#fff;font-size:clamp(3rem,7vw,5rem);font-weight:300;line-height:1.05}.page-title em,.section-title em{font-style:italic;color:var(--gold-light)}.hero-sub{font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,.72);font-size:1.25rem;font-style:italic;max-width:720px;margin:1.4rem auto 2.2rem;line-height:1.7}.section{padding:6rem 4rem}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.1rem,4vw,3.2rem);font-weight:300;color:var(--navy);line-height:1.18;margin-bottom:1rem}.section-sub{color:var(--muted);font-size:.9rem;line-height:1.8;max-width:620px}.split{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}.feature-card,.contact-card,.dish-card{background:#fff;padding:2rem;border-top:2px solid var(--gold);box-shadow:var(--shadow)}.feature-icon{font-size:2rem;margin-bottom:1rem}.feature-card h3,.contact-card h3,.dish-card h3{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;color:var(--navy);margin-bottom:.7rem}.feature-card p,.contact-card p,.dish-card p{font-size:.84rem;line-height:1.75;color:var(--muted)}.dark-band{background:var(--navy);color:#fff;position:relative;overflow:hidden}.dark-band .section-title{color:#fff}.dark-band .section-sub{color:rgba(255,255,255,.55)}.gold-band{background:var(--gold);padding:2.8rem 4rem;text-align:center;color:var(--navy)}.gold-band h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400}.cta-section{background:var(--navy-mid);padding:5rem 4rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;overflow:hidden}.cta-title{font-family:'Cormorant Garamond',serif;color:#fff;font-size:2.4rem;font-weight:300;line-height:1.15}.cta-sub{color:rgba(255,255,255,.5);font-size:.85rem;margin-top:.8rem}.cta-actions{display:flex;gap:1rem;flex-wrap:wrap}footer{background:var(--navy)}.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding:4rem 4rem 3rem;border-bottom:1px solid rgba(201,168,76,.1)}.ft-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:#fff;margin-bottom:.55rem;line-height:1.08;letter-spacing:.08em;text-transform:uppercase}.ft-brand-name span{display:block;color:var(--gold-light);font-family:'Jost',sans-serif;font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;margin-top:.45rem;font-weight:500}.ft-brand-loc{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.2rem}.ft-brand-desc,.ft-contact-item span,.ft-links-list a{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.7}.ft-col-title{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem}.ft-links-list{display:flex;flex-direction:column;gap:.7rem}.ft-contact-item{display:flex;gap:.7rem;margin-bottom:.8rem}.ft-bottom{padding:1.5rem 4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.ft-copy,.ft-bottom-links a{font-size:.72rem;color:rgba(255,255,255,.25)}.ft-bottom-links{display:flex;gap:1.5rem}@media(max-width:900px){nav,nav.scrolled{padding:1rem 1.5rem}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.section{padding:4rem 1.5rem}.split,.card-grid{grid-template-columns:1fr}.cta-section{padding:3.5rem 1.5rem;flex-direction:column;text-align:center}.cta-actions{justify-content:center}.ft-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem}.ft-bottom{padding:1.5rem;justify-content:center;text-align:center}.gold-band{padding:2.3rem 1.5rem}}@media(max-width:520px){.ft-top{grid-template-columns:1fr}.page-hero{min-height:62vh}.hero-inner{padding-top:7rem}.cta-actions{flex-direction:column}.btn-primary,.btn-outline{width:100%;text-align:center}}
 .booking-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem}.booking-box,.summary-box{background:#fff;padding:2.4rem;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.full{grid-column:1/-1}label{display:block;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}input,select,textarea{width:100%;border:1px solid var(--border);background:var(--cream);padding:.95rem;font-family:inherit;color:var(--text);outline:none}textarea{min-height:130px;resize:vertical}.summary-line{display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);font-size:.88rem}.summary-line strong{color:var(--navy)}.summary-note{margin-top:1.5rem;padding:1rem;background:var(--gold-pale);font-size:.82rem;line-height:1.7;color:var(--navy-light)}.success{display:none;margin-top:1rem;padding:1rem;background:#eef8ef;color:#245d31;font-size:.85rem;line-height:1.6}.error{display:none;margin-top:1rem;padding:1rem;background:#fff1ee;color:#8a2d1e;font-size:.85rem;line-height:1.6}@media(max-width:900px){.booking-wrap,.form-grid{grid-template-columns:1fr}}
-/* === Masoala Experiences inter-sites bar — premium clean v2 === */
-:root{--mx-sitebar-height:34px;}
-html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
-body{padding-top:var(--mx-sitebar-height);}
-.mx-sitebar{
-  position:fixed;top:0;left:0;right:0;z-index:10000;
-  height:var(--mx-sitebar-height);
-  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
-  border-bottom:1px solid rgba(232,213,163,.18);
-  box-shadow:0 8px 26px rgba(0,0,0,.18);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  font-family:inherit;
 }
-.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
-.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
-.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
-.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
-.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
-nav{top:var(--mx-sitebar-height)!important;}
-.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
-@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
-@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
 
 
 
@@ -101,19 +80,54 @@ select#requestType{border-color:rgba(201,168,76,.38);background:#fffdf7;font-wei
 .booking-trust strong{display:block;color:var(--primary,#0f4c5c);margin-bottom:.25rem}
 @media(max-width:900px){.premium-strip,.booking-trust{grid-template-columns:1fr}.conversion-panel{margin:2rem 1rem;padding:1.6rem}.conversion-actions{flex-direction:column}.conversion-actions a{width:100%}}
 
+
+/* Ecosystem navigation final fixed */
+.ecosystem-nav{
+position:relative;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:.65rem;
+flex-wrap:wrap;
+padding:.62rem 1rem;
+background:#041018;
+color:#fff;
+font-family:Arial,sans-serif;
+font-size:.88rem;
+line-height:1.2;
+border-bottom:1px solid rgba(255,255,255,.12)
+}
+.ecosystem-nav a{
+display:inline-flex;
+align-items:center;
+gap:.35rem;
+padding:.45rem .75rem;
+border-radius:999px;
+color:rgba(255,255,255,.86);
+text-decoration:none;
+font-weight:800;
+border:1px solid transparent;
+transition:.2s
+}
+.ecosystem-nav a:hover{background:rgba(255,255,255,.10);color:#fff}
+.ecosystem-nav a.active{background:#f0c36d;color:#061923;border-color:#f0c36d}
+@media(max-width:720px){
+.ecosystem-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:.58rem .8rem}
+.ecosystem-nav a{white-space:nowrap;font-size:.82rem}
+}
+
 </style><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." name="description"/><meta content="réservation hôtel Maroantsetra, Manga Beach réservation, séjour Masoala, transfert bateau" name="keywords"/><meta content="index, follow" name="robots"/><meta content="Réservation | Manga Beach Hôtel Maroantsetra" property="og:title"/><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." property="og:description"/><meta content="website" property="og:type"/></head><body>
-<!-- MASOALA EXPERIENCES SITEBAR -->
-<div aria-label="Navigation Masoala Experiences" class="mx-sitebar">
-<div class="mx-sitebar-inner">
-<a class="mx-sitebar-brand" href="https://masoala-experiences.vercel.app/" rel="noopener" target="_blank">Masoala Experiences</a>
-<div class="mx-sitebar-links">
-<a href="https://manga-beach-hotel.vercel.app/" rel="noopener" target="_blank">🏨 Manga Beach</a>
-<a href="https://paradise-valley-lodge.vercel.app/" rel="noopener" target="_blank">🌿 Paradise Valley</a>
-<a href="https://peche-sportive-masoala.vercel.app/" rel="noopener" target="_blank">🎣 Pêche Masoala</a>
-<a href="https://masoala-experiences.vercel.app/" rel="noopener" target="_blank">◉ Hub</a>
+
+<div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
+<a href="https://masoala-experiences.vercel.app/">◉ Masoala Experiences</a>
+<a href="https://manga-beach-hotel.vercel.app/" class="active">🏨 Manga Beach</a>
+<a href="https://paradise-valley-lodge.vercel.app/">🌿 Paradise Valley</a>
+<a href="https://peche-sportive-masoala.vercel.app/">🎣 Pêche Sportive</a>
 </div>
-</div>
-</div>
+
+
+
 <div class="mobile-menu" id="mobile-menu"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a><a class="" href="contact.html">Contact</a><a class="mob-cta" href="reservation.html">Réserver</a></div><nav id="navbar"><a class="nav-logo" href="index.html"><div class="nav-logo-text"><strong>Manga Beach</strong><span>Hôtel Maroantsetra</span></div></a><div class="nav-links"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a><a class="" href="contact.html">Contact</a></div><a class="nav-cta" href="reservation.html">Réserver</a><button aria-expanded="false" aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></nav><section class="page-hero" style="--hero-img:url('assets/chambre-double.jpg')"><div class="hero-inner"><div class="eyebrow">Réservation en ligne</div><h1 class="page-title">Réserver votre <em>séjour</em></h1><p class="hero-sub">Choisissez votre chambre, vos dates et envoyez votre demande. Séjour hôtel, combiné, bateau ou pêche sportive — réponse sous 24h.</p></div></section>
 <section class="section">
 <div class="booking-wrap">
