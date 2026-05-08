@@ -117,6 +117,20 @@ transition:.2s
 .ecosystem-nav a{white-space:nowrap;font-size:.82rem}
 }
 
+
+/* Voyageurs select system */
+.guest-note{
+  grid-column:1/-1;
+  margin-top:-.25rem;
+  padding:.85rem 1rem;
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border:1px solid var(--border);
+  font-size:.82rem;
+  line-height:1.65;
+  color:var(--navy-light);
+}
+.guest-note strong{color:var(--navy)}
+
 </style><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." name="description"/><meta content="réservation hôtel Maroantsetra, Manga Beach réservation, séjour Masoala, transfert bateau" name="keywords"/><meta content="index, follow" name="robots"/><meta content="Réservation | Manga Beach Hôtel Maroantsetra" property="og:title"/><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." property="og:description"/><meta content="website" property="og:type"/></head><body>
 
 <div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
@@ -143,6 +157,8 @@ transition:.2s
 <input name="_template" type="hidden" value="table"/>
 <input id="hiddenTariff" name="Résumé - Tarif" type="hidden" value=""/>
 <input id="hiddenGuests" name="Résumé - Voyageurs" type="hidden" value=""/>
+<input id="hiddenChildrenSmall" name="Résumé - Enfants moins de 5 ans" type="hidden" value=""/>
+<input id="hiddenChildrenBig" name="Résumé - Enfants 5 ans et plus" type="hidden" value=""/>
 <input id="hiddenNights" name="Résumé - Nuits" type="hidden" value=""/>
 <input id="hiddenTotal" name="Résumé - Total estimatif" type="hidden" value=""/>
 <input id="hiddenCategory" name="Résumé - Catégorie chambre" type="hidden" value=""/>
@@ -192,11 +208,38 @@ transition:.2s
 </div>
 <div>
 <label>Adultes</label>
-<input id="adults" min="1" name="Adultes" type="number" value="2"/>
+<select id="adults" name="Adultes" required>
+<option value="1">1 adulte</option>
+<option selected value="2">2 adultes</option>
+<option value="3">3 adultes</option>
+<option value="4">4 adultes</option>
+<option value="5">5 adultes</option>
+<option value="6">6 adultes</option>
+</select>
 </div>
 <div>
-<label>Enfants</label>
-<input id="children" min="0" name="Enfants" type="number" value="0"/>
+<label>Enfants -5 ans</label>
+<select id="childrenSmall" name="Enfants moins de 5 ans">
+<option selected value="0">0 enfant</option>
+<option value="1">1 enfant</option>
+<option value="2">2 enfants</option>
+<option value="3">3 enfants</option>
+<option value="4">4 enfants</option>
+</select>
+</div>
+<div>
+<label>Enfants 5 ans et +</label>
+<select id="childrenBig" name="Enfants 5 ans et plus">
+<option selected value="0">0 enfant</option>
+<option value="1">1 enfant</option>
+<option value="2">2 enfants</option>
+<option value="3">3 enfants</option>
+<option value="4">4 enfants</option>
+</select>
+</div>
+<div class="guest-note">
+<strong>Voyageurs</strong><br>
+Les enfants sont séparés en deux catégories afin de faciliter la confirmation du tarif final selon l’âge.
 </div>
 <div class="full">
 <label>Message</label>
@@ -293,7 +336,8 @@ const f = document.getElementById('bookingForm'),
       arrival = document.getElementById('arrival'),
       departure = document.getElementById('departure'),
       adults = document.getElementById('adults'),
-      children = document.getElementById('children'),
+      childrenSmall = document.getElementById('childrenSmall'),
+      childrenBig = document.getElementById('childrenBig'),
       message = document.getElementById('message'),
       successBox = document.getElementById('successBox'),
       errorBox = document.getElementById('errorBox'),
@@ -401,13 +445,22 @@ function nights(){
 }
 
 function travellersText(){
-  const adultCount = Number(adults.value || 0);
-  const childCount = Number(children.value || 0);
-  let text = adultCount + ' adulte' + (adultCount > 1 ? 's' : '');
-  if(childCount > 0){
-    text += ' · ' + childCount + ' enfant' + (childCount > 1 ? 's' : '');
+  const adultCount = Number(adults?.value || 0);
+  const smallCount = Number(childrenSmall?.value || 0);
+  const bigCount = Number(childrenBig?.value || 0);
+
+  const parts = [];
+  parts.push(adultCount + ' adulte' + (adultCount > 1 ? 's' : ''));
+
+  if(smallCount > 0){
+    parts.push(smallCount + ' enfant' + (smallCount > 1 ? 's' : '') + ' -5 ans');
   }
-  return text;
+
+  if(bigCount > 0){
+    parts.push(bigCount + ' enfant' + (bigCount > 1 ? 's' : '') + ' 5 ans et +');
+  }
+
+  return parts.join(' · ');
 }
 
 function estimatedTotal(){
@@ -490,6 +543,8 @@ function updateSummary(){
 
   document.getElementById('hiddenTariff').value = cfg.showRoom && roomData.price ? formatAriary(roomData.price) : cfg.tariff;
   document.getElementById('hiddenGuests').value = travellersText();
+  document.getElementById('hiddenChildrenSmall').value = (childrenSmall?.value || '0') + ' enfant(s) moins de 5 ans';
+  document.getElementById('hiddenChildrenBig').value = (childrenBig?.value || '0') + ' enfant(s) 5 ans et plus';
   document.getElementById('hiddenNights').value = n && n > 0 ? n + ' nuit' + (n > 1 ? 's' : '') : 'Non précisé';
   document.getElementById('hiddenTotal').value = total ? formatAriaryTotal(total) : 'À confirmer / sur devis';
   document.getElementById('hiddenCategory').value = cfg.showRoom ? (roomData.category || 'À confirmer') : 'Service / activité';
@@ -543,6 +598,10 @@ function prefillFromParams(){
   const params = new URLSearchParams(window.location.search);
   const type = params.get('type');
   const roomParam = params.get('room');
+  const adultsParam = params.get('adults') || params.get('adultes');
+  const childrenParam = params.get('children') || params.get('enfants');
+  const childrenSmallParam = params.get('children_small') || params.get('childrenSmall') || params.get('children_under_5');
+  const childrenBigParam = params.get('children_big') || params.get('childrenBig') || params.get('children_5_plus');
 
   if(type){
     const map = {
@@ -555,6 +614,27 @@ function prefillFromParams(){
     [...requestType.options].forEach(option => {
       if(option.value === targetType) requestType.value = targetType;
     });
+  }
+
+
+  if(adultsParam && adults){
+    const value = String(adultsParam).match(/\d+/)?.[0] || adultsParam;
+    if([...adults.options].some(o => o.value === value)) adults.value = value;
+  }
+
+  if(childrenSmallParam && childrenSmall){
+    const value = String(childrenSmallParam).match(/\d+/)?.[0] || childrenSmallParam;
+    if([...childrenSmall.options].some(o => o.value === value)) childrenSmall.value = value;
+  }
+
+  if(childrenBigParam && childrenBig){
+    const value = String(childrenBigParam).match(/\d+/)?.[0] || childrenBigParam;
+    if([...childrenBig.options].some(o => o.value === value)) childrenBig.value = value;
+  }
+
+  if(childrenParam && childrenSmall && !childrenSmallParam && !childrenBigParam){
+    const value = String(childrenParam).match(/\d+/)?.[0] || childrenParam;
+    if([...childrenSmall.options].some(o => o.value === value)) childrenSmall.value = value;
   }
 
   if(roomParam){
@@ -589,7 +669,8 @@ function resetFormState(){
   requestType.value = 'Séjour Manga Beach Hôtel Maroantsetra';
   room.selectedIndex = 0;
   adults.value = 2;
-  children.value = 0;
+  childrenSmall.value = 0;
+  childrenBig.value = 0;
   arrival.min = todayISO;
   departure.min = todayISO;
   departure.value = '';
