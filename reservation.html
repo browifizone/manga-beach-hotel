@@ -145,6 +145,70 @@ transition:.2s
 .quote-mode-note strong{color:var(--navy)}
 .summary-line strong.quote-value{color:#7d5a13}
 
+
+/* Reservation & contact unified */
+.contact-mini-section{
+  margin-top:2rem;
+  padding:2rem;
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border:1px solid var(--border);
+  box-shadow:0 14px 42px rgba(10,22,40,.07);
+}
+.contact-mini-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-top:1.2rem;
+}
+.contact-mini-card{
+  background:#fff;
+  border:1px solid var(--border);
+  padding:1rem;
+  min-height:100%;
+}
+.contact-mini-card strong{
+  display:block;
+  color:var(--navy,#0a1628);
+  margin-bottom:.35rem;
+}
+.contact-mini-card a,.contact-mini-card span{
+  color:var(--muted,#6b7a8d);
+  font-size:.88rem;
+  line-height:1.65;
+}
+.contact-mini-actions{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1.4rem;
+}
+.contact-mini-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.85rem 1.15rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:.76rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.contact-mini-actions .primary{
+  background:var(--gold,#c9a84c);
+  color:var(--navy,#0a1628);
+}
+.contact-mini-actions .secondary{
+  border:1px solid var(--border);
+  color:var(--navy,#0a1628);
+  background:#fff;
+}
+@media(max-width:900px){
+  .contact-mini-grid{grid-template-columns:1fr}
+  .contact-mini-actions{flex-direction:column}
+  .contact-mini-actions a{width:100%}
+}
+
 </style><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." name="description"/><meta content="réservation hôtel Maroantsetra, Manga Beach réservation, séjour Masoala, transfert bateau" name="keywords"/><meta content="index, follow" name="robots"/><meta content="Réservation | Manga Beach Hôtel Maroantsetra" property="og:title"/><meta content="Demandez votre réservation au Manga Beach Hôtel Maroantsetra : chambres familiales ou doubles, séjour hôtel, transfert, bateau, pêche sportive ou combiné Masoala." property="og:description"/><meta content="website" property="og:type"/></head><body>
 
 <div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
@@ -156,7 +220,7 @@ transition:.2s
 
 
 
-<div class="mobile-menu" id="mobile-menu"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a><a class="" href="contact.html">Contact</a><a class="mob-cta" href="reservation.html">Réserver</a></div><nav id="navbar"><a class="nav-logo" href="index.html"><div class="nav-logo-text"><strong>Manga Beach</strong><span>Hôtel Maroantsetra</span></div></a><div class="nav-links"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a><a class="" href="contact.html">Contact</a></div><a class="nav-cta" href="reservation.html">Réserver</a><button aria-expanded="false" aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></nav><section class="page-hero" style="--hero-img:url('assets/chambre-double.jpg')"><div class="hero-inner"><div class="eyebrow">Réservation en ligne</div><h1 class="page-title">Réserver votre <em>séjour</em></h1><p class="hero-sub">Choisissez votre chambre, vos dates et envoyez votre demande. Séjour hôtel, combiné, bateau ou pêche sportive — réponse sous 24h.</p></div></section>
+<div class="mobile-menu" id="mobile-menu"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a><a class="mob-cta" href="reservation.html">Réserver</a></div><nav id="navbar"><a class="nav-logo" href="index.html"><div class="nav-logo-text"><strong>Manga Beach</strong><span>Hôtel Maroantsetra</span></div></a><div class="nav-links"><a class="" href="index.html">Accueil</a><a class="" href="chambres.html">Chambres</a><a class="" href="restaurant.html">Restaurant</a><a class="" href="galerie.html">Galerie</a></div><a class="nav-cta" href="reservation.html">Réserver</a><button aria-expanded="false" aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button></nav><section class="page-hero" style="--hero-img:url('assets/chambre-double.jpg')"><div class="hero-inner"><div class="eyebrow">Réservation & demande</div><h1 class="page-title">Réservation & <em>demande</em></h1><p class="hero-sub">Choisissez votre chambre, vos dates et envoyez votre demande. Séjour hôtel, combiné, bateau ou pêche sportive — réponse sous 24h.</p></div></section>
 <section class="section">
 <div class="booking-wrap">
 <div class="booking-box">
@@ -339,7 +403,7 @@ Les enfants sont séparés en deux catégories afin de faciliter la confirmation
 <div class="boat-tariff-note">Manga Beach → Masoala Village ou Mananara : <strong>3 500 000 Ar</strong> + attente <strong>80 000 Ar / jour</strong>. Les tarifs sont indicatifs et confirmés selon météo, disponibilité bateau et nombre de personnes.</div>
 </div>
 </section>
-<section class="cta-section"><div><div class="eyebrow">Besoin d'aide ?</div><h2 class="cta-title">Besoin d’organiser<br/>un séjour complet ?</h2><p class="cta-sub">Manga Beach peut vous orienter pour l’hôtel, les transferts, Paradise Valley et les sorties en mer.</p></div><div class="cta-actions"><a class="btn-primary" href="tel:+261325478904">Appeler</a><a class="btn-outline" href="contact.html">Contact</a></div></section>
+<section class="cta-section"><div><div class="eyebrow">Besoin d'aide ?</div><h2 class="cta-title">Besoin d’organiser<br/>un séjour complet ?</h2><p class="cta-sub">Manga Beach peut vous orienter pour l’hôtel, les transferts, Paradise Valley et les sorties en mer.</p></div><div class="cta-actions"><a class="btn-primary" href="tel:+261325478904">Appeler</a></div></section>
 <script>
 const f = document.getElementById('bookingForm'),
       requestType = document.getElementById('requestType'),
@@ -807,4 +871,4 @@ updateRoomHelp();
 syncMessageSuggestion();
 updateSummary();
 </script>
-<footer><div class="ft-top"><div><div class="ft-brand-name">Manga Beach<span>Hôtel Maroantsetra</span></div><div class="ft-brand-loc">Maroantsetra · Madagascar</div><p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p></div><div><div class="ft-col-title">Navigation</div><div class="ft-links-list"><a href="index.html">Accueil</a><a href="chambres.html">Chambres</a><a href="restaurant.html">Restaurant</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div></div><div><div class="ft-col-title">Services</div><div class="ft-links-list"><a href="contact.html">Pêche sportive</a><a href="contact.html">Observation baleines</a><a href="contact.html">Parc Masoala</a><a href="contact.html">Transferts</a><a href="restaurant.html">Restaurant</a></div></div><div><div class="ft-col-title">Contact</div><div class="ft-contact-item"><span>📍</span><span>R1 011 Androkaroka<br/>BP 73 Maroantsetra</span></div><div class="ft-contact-item"><span>✉</span><span>mangabeach.hotel@yahoo.com</span></div><div class="ft-contact-item"><span>☎</span><span>+261 32 54 789 04<br/>+261 34 07 019 77</span></div></div></div><div class="ft-bottom"><div class="ft-copy">© 2025 Manga Beach Hôtel Maroantsetra. Tous droits réservés.</div><div class="ft-bottom-links"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div></footer><script>const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');hamburger.setAttribute('aria-expanded',mobileMenu.classList.contains('open'));document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.12});document.querySelectorAll('.feature-card,.gallery-card,.info-card,.dish-card,.contact-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .65s,transform .65s';obs.observe(el)});</script></body></html>
+<footer><div class="ft-top"><div><div class="ft-brand-name">Manga Beach<span>Hôtel Maroantsetra</span></div><div class="ft-brand-loc">Maroantsetra · Madagascar</div><p class="ft-brand-desc">Hôtel et restaurant au cœur de la baie d'Antongil, porte d'entrée du Parc National de Masoala.</p></div><div><div class="ft-col-title">Navigation</div><div class="ft-links-list"><a href="index.html">Accueil</a><a href="chambres.html">Chambres</a><a href="restaurant.html">Restaurant</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation &amp; Demande</a></div></div><div><div class="ft-col-title">Services</div><div class="ft-links-list"><a href="reservation.html">Pêche sportive</a><a href="reservation.html">Observation baleines</a><a href="reservation.html">Parc Masoala</a><a href="reservation.html">Transferts</a><a href="restaurant.html">Restaurant</a></div></div><div><div class="ft-col-title">Contact</div><div class="ft-contact-item"><span>📍</span><span>R1 011 Androkaroka<br/>BP 73 Maroantsetra</span></div><div class="ft-contact-item"><span>✉</span><span>mangabeach.hotel@yahoo.com</span></div><div class="ft-contact-item"><span>☎</span><span>+261 32 54 789 04<br/>+261 34 07 019 77</span></div></div></div><div class="ft-bottom"><div class="ft-copy">© 2025 Manga Beach Hôtel Maroantsetra. Tous droits réservés.</div><div class="ft-bottom-links"><a href="#">Mentions légales</a><a href="#">Confidentialité</a></div></div></footer><script>const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');hamburger.setAttribute('aria-expanded',mobileMenu.classList.contains('open'));document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:.12});document.querySelectorAll('.feature-card,.gallery-card,.info-card,.dish-card,.contact-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity .65s,transform .65s';obs.observe(el)});</script></body></html>
